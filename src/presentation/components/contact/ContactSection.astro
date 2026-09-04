@@ -1,7 +1,8 @@
 ---
 import type { PersonalInfo } from '@/core/cv/domain/models/CVData';
 import { mailtoHref, telHref } from '@/core/shared/utils/formatters';
-import { CONTACT_SECTION } from './constants';
+import { getContactSection } from './constants';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 import Card from '../shared/Card.astro';
 import Icon from '../shared/Icon.astro';
 
@@ -10,12 +11,13 @@ interface Props {
 }
 
 const { personal } = Astro.props;
+const contactSection = getContactSection(resolveLocale(Astro.currentLocale));
 ---
 
 <section class="py-12 px-4">
   <div class="max-w-3xl mx-auto">
-    <h2 class="section-title">{CONTACT_SECTION.title}</h2>
-    <p class="text-slate-600 dark:text-slate-300 -mt-6 mb-8 max-w-xl">{CONTACT_SECTION.intro}</p>
+    <h2 class="section-title">{contactSection.title}</h2>
+    <p class="text-slate-600 dark:text-slate-300 -mt-6 mb-8 max-w-xl">{contactSection.intro}</p>
 
     <div class="grid sm:grid-cols-2 gap-4">
       <Card variant="glass" hover class="p-5">

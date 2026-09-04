@@ -2,11 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import CVSection from '../components/cv/CVSection.astro';
 import { container } from '@/core/di/container';
-import { CV_LABELS } from '@/core/cv/constants';
+import { getCvLabels } from '@/core/cv/constants';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 
 const cvData = container.getCVData.execute();
+const cvLabels = getCvLabels(resolveLocale(Astro.currentLocale));
 ---
 
-<Layout title={CV_LABELS.pageTitle}>
+<Layout title={cvLabels.pageTitle}>
   <CVSection cvData={cvData} />
 </Layout>

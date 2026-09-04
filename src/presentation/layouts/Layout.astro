@@ -1,18 +1,21 @@
 ---
 import '../../styles/global.css';
 import Drawer from '../components/drawer/Drawer.astro';
-import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+import { getSiteDefaults } from '@/core/shared/constants/ui';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = SITE_DEFAULTS.description } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const siteDefaults = getSiteDefaults(locale);
+const { title, description = siteDefaults.description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={SITE_DEFAULTS.lang}>
+<html lang={siteDefaults.lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

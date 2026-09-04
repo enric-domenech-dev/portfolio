@@ -1,5 +1,6 @@
-export const CONTACT_SECTION = {
-  title: 'Contacto',
-  eyebrow: 'Hablemos',
-  intro: '¿Tienes una propuesta o quieres saber más? Estos son los canales más directos para contactar.',
-} as const;
+import type { Locale } from '@/core/shared/i18n/locale';
+import { getDictionary } from '@/core/shared/i18n/dictionary';
+
+export function getContactSection(locale: Locale) {
+  return getDictionary(locale).contact;
+}

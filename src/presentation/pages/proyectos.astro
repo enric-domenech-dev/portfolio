@@ -2,12 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import ProjectsSection from '../components/projects/ProjectsSection.astro';
 import { container } from '@/core/di/container';
-import { PROJECTS_SECTION } from '@/core/projects/constants';
-import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+import { getProjectsSection } from '@/core/projects/constants';
+import { getSiteDefaults } from '@/core/shared/constants/ui';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 
 const items = container.getProjects.execute();
+const locale = resolveLocale(Astro.currentLocale);
+const projectsSection = getProjectsSection(locale);
+const siteDefaults = getSiteDefaults(locale);
 ---
 
-<Layout title={`${PROJECTS_SECTION.title} - ${SITE_DEFAULTS.title}`}>
+<Layout title={`${projectsSection.title} - ${siteDefaults.title}`}>
   <ProjectsSection items={items} />
 </Layout>

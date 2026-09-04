@@ -3,12 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/hero/Header.astro';
 import QuickAccess from '../components/home/QuickAccess.astro';
 import { container } from '@/core/di/container';
-import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+import { getSiteDefaults } from '@/core/shared/constants/ui';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 
 const cvData = container.getCVData.execute();
+const siteDefaults = getSiteDefaults(resolveLocale(Astro.currentLocale));
 ---
 
-<Layout title={SITE_DEFAULTS.title} description={SITE_DEFAULTS.description}>
+<Layout title={siteDefaults.title} description={siteDefaults.description}>
   <Header personal={cvData.personal} />
   <QuickAccess />
 </Layout>

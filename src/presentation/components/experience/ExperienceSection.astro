@@ -1,8 +1,9 @@
 ---
 import type { Experience } from '@/core/experience/domain/models/Experience';
-import { EXPERIENCE_SECTION } from '@/core/experience/constants';
+import { getExperienceSection } from '@/core/experience/constants';
 import { STAGGER_STEP_MS } from '@/core/shared/constants/animations';
 import { staggerDelay } from '@/core/shared/utils/formatters';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 import Badge from '../shared/Badge.astro';
 import Card from '../shared/Card.astro';
 import Icon from '../shared/Icon.astro';
@@ -12,11 +13,12 @@ interface Props {
 }
 
 const { items } = Astro.props;
+const experienceSection = getExperienceSection(resolveLocale(Astro.currentLocale));
 ---
 
 <section class="py-12 px-4">
   <div class="max-w-5xl mx-auto">
-    <h2 class="section-title">{EXPERIENCE_SECTION.title}</h2>
+    <h2 class="section-title">{experienceSection.title}</h2>
 
     <div class="relative pl-5 md:pl-8 space-y-6 before:absolute before:left-1 before:top-2 before:bottom-2 before:w-0.5 before:bg-gradient-to-b before:from-primary-500 before:to-secondary-400">
       {items.map((exp, index) => (
@@ -26,7 +28,7 @@ const { items } = Astro.props;
             <div>
               <p class="flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-primary-500 mb-2">
                 <Icon name="briefcase" size={14} />
-                {EXPERIENCE_SECTION.eyebrow}
+                {experienceSection.eyebrow}
               </p>
               <h3 class="text-xl md:text-2xl font-bold text-slate-900 dark:text-slate-100">{exp.position}</h3>
               <p class="text-base md:text-lg text-slate-600 dark:text-slate-300">{exp.company}</p>

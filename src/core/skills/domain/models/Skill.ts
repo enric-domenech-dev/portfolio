@@ -11,8 +11,6 @@ export type SkillCategoryKey =
 
 export interface SkillCategory {
   key: SkillCategoryKey;
-  title: string;
-  cvTitle: string;
   showInCv: boolean;
   icon: IconName;
   items: string[];

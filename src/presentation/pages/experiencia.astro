@@ -2,12 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import ExperienceSection from '../components/experience/ExperienceSection.astro';
 import { container } from '@/core/di/container';
-import { EXPERIENCE_SECTION } from '@/core/experience/constants';
-import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+import { getExperienceSection } from '@/core/experience/constants';
+import { getSiteDefaults } from '@/core/shared/constants/ui';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 
 const items = container.getExperiences.execute();
+const locale = resolveLocale(Astro.currentLocale);
+const experienceSection = getExperienceSection(locale);
+const siteDefaults = getSiteDefaults(locale);
 ---
 
-<Layout title={`${EXPERIENCE_SECTION.title} - ${SITE_DEFAULTS.title}`}>
+<Layout title={`${experienceSection.title} - ${siteDefaults.title}`}>
   <ExperienceSection items={items} />
 </Layout>

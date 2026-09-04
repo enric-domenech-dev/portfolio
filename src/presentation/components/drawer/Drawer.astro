@@ -1,9 +1,23 @@
 ---
-import { NAV_ITEMS } from '@/core/shared/constants/navigation';
+import { getNavItems } from '@/core/shared/constants/navigation';
+import { getDictionary } from '@/core/shared/i18n/dictionary';
+import { LOCALES, LOCALE_LABELS, canonicalPath, localizedPath, resolveLocale } from '@/core/shared/i18n/locale';
 import Icon from '../shared/Icon.astro';
 
+const locale = resolveLocale(Astro.currentLocale);
+const dict = getDictionary(locale);
+const navItems = getNavItems(locale);
 const currentPath = Astro.url.pathname;
-const isActive = (href: string) => href === currentPath;
+const normalize = (path: string) => (path.length > 1 ? path.replace(/\/+$/, '') : path);
+const isActive = (href: string) => normalize(href) === normalize(currentPath);
+
+const canonical = canonicalPath(currentPath, locale);
+const languageLinks = LOCALES.map((loc) => ({
+  locale: loc,
+  label: LOCALE_LABELS[loc],
+  href: localizedPath(canonical, loc),
+  active: loc === locale,
+}));
 ---
 
 <button
@@ -11,7 +25,7 @@ const isActive = (href: string) => href === currentPath;
   class="fixed top-4 left-4 z-[70] glass-card !rounded-full p-3 text-slate-700 dark:text-slate-100 leading-none print:hidden"
   aria-expanded="false"
   aria-controls="siteDrawer"
-  aria-label="Abrir menú de navegación"
+  aria-label={dict.drawer.openLabel}
 >
   <span id="drawerIconMenu" class="inline-flex"><Icon name="menu" /></span>
   <span id="drawerIconClose" class="hidden"><Icon name="close" /></span>
@@ -23,16 +37,18 @@ const isActive = (href: string) => href === currentPath;
   id="siteDrawer"
   role="dialog"
   aria-modal="true"
-  aria-label="Navegación principal"
+  aria-label={dict.nav.inicio}
   aria-hidden="true"
+  data-open-label={dict.drawer.openLabel}
+  data-close-label={dict.drawer.closeLabel}
   class="fixed inset-y-0 left-0 z-[65] w-72 md:w-80 -translate-x-full transition-transform duration-300 ease-in-out motion-reduce:transition-none glass-card !rounded-none !border-l-0 !border-y-0 overflow-y-auto print:hidden"
 >
   <div class="flex items-center pl-20 pr-6 py-5 border-b border-white/20">
-    <span class="font-semibold text-slate-800 dark:text-slate-100">Menú</span>
+    <span class="font-semibold text-slate-800 dark:text-slate-100">{dict.drawer.menu}</span>
   </div>
 
   <nav class="flex flex-col gap-1 px-4 py-6">
-    {NAV_ITEMS.map((item) => (
+    {navItems.map((item) => (
       <a
         href={item.href}
         data-drawer-link
@@ -49,14 +65,39 @@ const isActive = (href: string) => href === currentPath;
     ))}
   </nav>
 
-  <div class="mt-auto px-4 py-5 border-t border-white/20">
+  <div class="mt-auto px-4 py-5 border-t border-white/20 flex flex-col gap-4">
+    <div>
+      <p class="px-1 mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">{dict.drawer.languageLabel}</p>
+      <div class="flex gap-2">
+        {languageLinks.map((lang) =>
+          lang.active ? (
+            <span
+              aria-current="true"
+              class="flex-1 text-center rounded-lg px-2 py-2 text-xs font-semibold uppercase bg-primary-100 text-primary-700 dark:bg-primary-500/20 dark:text-primary-200"
+            >
+              {lang.locale}
+            </span>
+          ) : (
+            <a
+              href={lang.href}
+              class="flex-1 text-center rounded-lg px-2 py-2 text-xs font-semibold uppercase transition duration-200 text-slate-600 hover:bg-white/40 dark:text-slate-300 dark:hover:bg-white/10"
+            >
+              {lang.locale}
+            </a>
+          )
+        )}
+      </div>
+    </div>
+
     <button
       id="themeToggle"
       class="w-full flex items-center gap-2.5 rounded-xl px-4 py-3 text-sm font-medium text-left text-slate-700 hover:bg-white/40 dark:text-slate-200 dark:hover:bg-white/10 transition duration-200"
+      data-label-dark={dict.drawer.themeDark}
+      data-label-light={dict.drawer.themeLight}
     >
       <span id="themeIconMoon" class="inline-flex"><Icon name="moon" size={16} /></span>
       <span id="themeIconSun" class="hidden"><Icon name="sun" size={16} /></span>
-      <span id="themeToggleLabel">Oscuro</span>
+      <span id="themeToggleLabel">{dict.drawer.themeDark}</span>
     </button>
   </div>
 </aside>
@@ -84,7 +125,7 @@ const isActive = (href: string) => href === currentPath;
     if (!panel || !overlay || !toggleBtn) return;
     isOpen = true;
     toggleBtn.setAttribute('aria-expanded', 'true');
-    toggleBtn.setAttribute('aria-label', 'Cerrar menú de navegación');
+    toggleBtn.setAttribute('aria-label', panel.dataset.closeLabel ?? '');
     drawerIconMenu?.classList.add('hidden');
     drawerIconClose?.classList.remove('hidden');
     overlay.classList.remove('hidden');
@@ -101,7 +142,7 @@ const isActive = (href: string) => href === currentPath;
     if (!panel || !overlay || !toggleBtn) return;
     isOpen = false;
     toggleBtn.setAttribute('aria-expanded', 'false');
-    toggleBtn.setAttribute('aria-label', 'Abrir menú de navegación');
+    toggleBtn.setAttribute('aria-label', panel.dataset.openLabel ?? '');
     drawerIconMenu?.classList.remove('hidden');
     drawerIconClose?.classList.add('hidden');
     overlay.classList.add('hidden');
@@ -148,8 +189,9 @@ const isActive = (href: string) => href === currentPath;
     document.documentElement.classList.toggle('dark', theme === 'dark');
     themeIconMoon?.classList.toggle('hidden', theme === 'dark');
     themeIconSun?.classList.toggle('hidden', theme !== 'dark');
-    if (themeToggleLabel) {
-      themeToggleLabel.textContent = theme === 'dark' ? 'Claro' : 'Oscuro';
+    if (themeToggleLabel && themeToggle) {
+      const label = theme === 'dark' ? themeToggle.dataset.labelLight : themeToggle.dataset.labelDark;
+      themeToggleLabel.textContent = label ?? '';
     }
   }
 

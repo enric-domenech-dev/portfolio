@@ -1,7 +1,9 @@
 ---
 import type { CVData } from '@/core/cv/domain/models/CVData';
-import { CV_LABELS, PDF_EXPORT_OPTIONS } from '@/core/cv/constants';
+import { getCvLabels, PDF_EXPORT_OPTIONS } from '@/core/cv/constants';
+import { getSkillCategoryMeta } from '@/core/skills/constants';
 import { joinList } from '@/core/shared/utils/formatters';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 import Badge from '../shared/Badge.astro';
 import Card from '../shared/Card.astro';
 import Icon from '../shared/Icon.astro';
@@ -11,6 +13,9 @@ interface Props {
 }
 
 const { cvData } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const CV_LABELS = getCvLabels(locale);
+const cvTitleByKey = Object.fromEntries(getSkillCategoryMeta(locale).map((meta) => [meta.key, meta.cvTitle]));
 const cvSkillCategories = cvData.skills.filter((category) => category.showInCv);
 ---
 
@@ -81,7 +86,7 @@ const cvSkillCategories = cvData.skills.filter((category) => category.showInCv);
       <div class="grid sm:grid-cols-2 gap-4">
         {cvSkillCategories.map((category) => (
           <div>
-            <h3 class="font-bold mb-2">{category.cvTitle}</h3>
+            <h3 class="font-bold mb-2">{cvTitleByKey[category.key]}</h3>
             <p class="text-sm text-slate-700 dark:text-slate-200">{joinList(category.items)}</p>
           </div>
         ))}

@@ -1,13 +1,17 @@
 ---
 import Card from '../shared/Card.astro';
 import Icon from '../shared/Icon.astro';
-import { QUICK_ACCESS_CARDS } from './constants';
+import { getQuickAccessCards } from './constants';
+import { resolveLocale } from '@/core/shared/i18n/locale';
+
+const locale = resolveLocale(Astro.currentLocale);
+const cards = getQuickAccessCards(locale);
 ---
 
 <section class="py-12 px-4">
   <div class="max-w-5xl mx-auto">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {QUICK_ACCESS_CARDS.map((card) => (
+      {cards.map((card) => (
         <Card variant="glass" hover class="p-6">
           <a href={card.href} class="block">
             <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200 mb-4">

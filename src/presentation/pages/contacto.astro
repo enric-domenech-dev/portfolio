@@ -2,12 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import ContactSection from '../components/contact/ContactSection.astro';
 import { container } from '@/core/di/container';
-import { CONTACT_SECTION } from '../components/contact/constants';
-import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+import { getContactSection } from '../components/contact/constants';
+import { getSiteDefaults } from '@/core/shared/constants/ui';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 
 const cvData = container.getCVData.execute();
+const locale = resolveLocale(Astro.currentLocale);
+const contactSection = getContactSection(locale);
+const siteDefaults = getSiteDefaults(locale);
 ---
 
-<Layout title={`${CONTACT_SECTION.title} - ${SITE_DEFAULTS.title}`}>
+<Layout title={`${contactSection.title} - ${siteDefaults.title}`}>
   <ContactSection personal={cvData.personal} />
 </Layout>

@@ -1,5 +1,7 @@
-export const SITE_DEFAULTS = {
-  lang: 'es',
-  title: 'Portfolio - Enric Domènech',
-  description: 'Portfolio profesional de Enric Domènech - Full-Stack & Mobile Developer',
-} as const;
+import type { Locale } from '../i18n/locale';
+import { getDictionary } from '../i18n/dictionary';
+
+export function getSiteDefaults(locale: Locale) {
+  const { site } = getDictionary(locale);
+  return { lang: locale, title: site.title, description: site.description };
+}

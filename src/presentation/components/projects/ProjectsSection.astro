@@ -1,8 +1,9 @@
 ---
 import type { Project } from '@/core/projects/domain/models/Project';
-import { PROJECTS_SECTION } from '@/core/projects/constants';
+import { getProjectsSection } from '@/core/projects/constants';
 import { STAGGER_STEP_MS } from '@/core/shared/constants/animations';
 import { staggerDelay } from '@/core/shared/utils/formatters';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 import Card from '../shared/Card.astro';
 import Icon from '../shared/Icon.astro';
 
@@ -11,19 +12,20 @@ interface Props {
 }
 
 const { items } = Astro.props;
+const projectsSection = getProjectsSection(resolveLocale(Astro.currentLocale));
 ---
 
 <section class="py-12 px-4">
   <div class="max-w-5xl mx-auto">
-    <h2 class="section-title">{PROJECTS_SECTION.title}</h2>
-    <p class="text-sm text-slate-500 dark:text-slate-400 -mt-6 mb-8">{PROJECTS_SECTION.placeholderNote}</p>
+    <h2 class="section-title">{projectsSection.title}</h2>
+    <p class="text-sm text-slate-500 dark:text-slate-400 -mt-6 mb-8">{projectsSection.placeholderNote}</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {items.map((project, index) => (
         <Card variant="glass" hover class="p-6 animate-fade-up" style={staggerDelay(index, STAGGER_STEP_MS.grid)}>
           <p class="flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-primary-500 mb-2">
             <Icon name="code" size={14} />
-            {PROJECTS_SECTION.eyebrow}
+            {projectsSection.eyebrow}
           </p>
           <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">{project.title}</h3>
           <p class="text-sm text-slate-700 dark:text-slate-200 leading-relaxed mb-4">{project.description}</p>
@@ -40,12 +42,12 @@ const { items } = Astro.props;
             <div class="flex flex-wrap gap-4 text-sm font-medium">
               {project.repoUrl && (
                 <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-primary-600 hover:text-primary-700">
-                  <Icon name="github" size={14} /> Repositorio
+                  <Icon name="github" size={14} /> {projectsSection.repo}
                 </a>
               )}
               {project.demoUrl && (
                 <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-primary-600 hover:text-primary-700">
-                  <Icon name="external-link" size={14} /> Demo
+                  <Icon name="external-link" size={14} /> {projectsSection.demo}
                 </a>
               )}
             </div>

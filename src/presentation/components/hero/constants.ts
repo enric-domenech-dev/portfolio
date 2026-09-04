@@ -1,9 +1,8 @@
-export const HERO_LABELS = {
-  eyebrow: 'Portfolio Profesional',
-  exploreExperience: 'Explorar experiencia',
-  viewFullCv: 'Ver CV completo',
-  linkedin: 'LinkedIn',
-  github: 'GitHub',
-} as const;
+import type { Locale } from '@/core/shared/i18n/locale';
+import { getDictionary } from '@/core/shared/i18n/dictionary';
+
+export function getHeroLabels(locale: Locale) {
+  return getDictionary(locale).hero;
+}
 
 export const AVATAR_SRC = '/profile.jpg';

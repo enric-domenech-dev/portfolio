@@ -2,12 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import EducationSection from '../components/education/EducationSection.astro';
 import { container } from '@/core/di/container';
-import { EDUCATION_SECTION } from '@/core/education/constants';
-import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+import { getEducationSection } from '@/core/education/constants';
+import { getSiteDefaults } from '@/core/shared/constants/ui';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 
 const items = container.getEducation.execute();
+const locale = resolveLocale(Astro.currentLocale);
+const educationSection = getEducationSection(locale);
+const siteDefaults = getSiteDefaults(locale);
 ---
 
-<Layout title={`${EDUCATION_SECTION.title} - ${SITE_DEFAULTS.title}`}>
+<Layout title={`${educationSection.title} - ${siteDefaults.title}`}>
   <EducationSection items={items} />
 </Layout>

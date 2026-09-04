@@ -1,22 +1,33 @@
 import type { IconName } from '@/core/shared/constants/icons';
+import type { Locale } from '@/core/shared/i18n/locale';
+import { getDictionary } from '@/core/shared/i18n/dictionary';
 import type { SkillCategoryKey } from './domain/models/Skill';
 
-export const SKILLS_SECTION = {
-  title: 'Competencias',
-} as const;
+export function getSkillsSection(locale: Locale) {
+  return getDictionary(locale).skillsSection;
+}
 
-export const SKILL_CATEGORY_META: Array<{
+export const BASE_CATEGORIES: Array<{ key: SkillCategoryKey; showInCv: boolean; icon: IconName }> = [
+  { key: 'mobile', showInCv: true, icon: 'smartphone' },
+  { key: 'backend', showInCv: true, icon: 'server' },
+  { key: 'frontend', showInCv: true, icon: 'monitor' },
+  { key: 'databases', showInCv: true, icon: 'database' },
+  { key: 'gamedev', showInCv: false, icon: 'gamepad' },
+  { key: 'tools', showInCv: false, icon: 'wrench' },
+  { key: 'other', showInCv: false, icon: 'sparkles' },
+];
+
+export function getSkillCategoryMeta(locale: Locale): Array<{
   key: SkillCategoryKey;
   title: string;
   cvTitle: string;
   showInCv: boolean;
   icon: IconName;
-}> = [
-  { key: 'mobile', title: 'Mobile', cvTitle: 'Desarrollo Mobile', showInCv: true, icon: 'smartphone' },
-  { key: 'backend', title: 'Backend', cvTitle: 'Backend', showInCv: true, icon: 'server' },
-  { key: 'frontend', title: 'Frontend', cvTitle: 'Frontend', showInCv: true, icon: 'monitor' },
-  { key: 'databases', title: 'Databases', cvTitle: 'Bases de Datos', showInCv: true, icon: 'database' },
-  { key: 'gamedev', title: 'Game Development', cvTitle: 'Game Development', showInCv: false, icon: 'gamepad' },
-  { key: 'tools', title: 'Dev Tools', cvTitle: 'Dev Tools', showInCv: false, icon: 'wrench' },
-  { key: 'other', title: 'Otras', cvTitle: 'Otras', showInCv: false, icon: 'sparkles' },
-];
+}> {
+  const { skillCategories } = getDictionary(locale);
+  return BASE_CATEGORIES.map((base) => ({
+    ...base,
+    title: skillCategories[base.key].title,
+    cvTitle: skillCategories[base.key].cvTitle,
+  }));
+}
