@@ -1,0 +1,30 @@
+---
+interface Props {
+  items: any[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="py-12 px-4">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-indigo-600">Formación Académica</h2>
+    
+    <div class="space-y-6">
+      {items.map((edu) => (
+        <div class="border-l-4 border-cyan-500 pl-6 pb-6">
+          <h3 class="text-xl font-bold text-gray-900">{edu.degree}</h3>
+          <p class="text-lg text-gray-600">{edu.institution}</p>
+          <div class="flex justify-between items-center mt-2">
+            <span class="text-sm text-gray-500">{edu.year}</span>
+            {edu.status && (
+              <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">
+                {edu.status}
+              </span>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

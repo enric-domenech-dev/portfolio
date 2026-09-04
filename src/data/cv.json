@@ -1,0 +1,103 @@
+{
+  "personal": {
+    "name": "Enric Domènech Aisa",
+    "title": "Full-Stack & Mobile Developer",
+    "location": "Barcelona, Spain",
+    "email": "enric.160493@gmail.com",
+    "phone": "+34 650 53 35 51",
+    "birthDate": "16/04/1993",
+    "dni": "47320898P",
+    "bio": "Persona responsable, dinámica i creativa, amb facilitat d'adaptació i capacitat de treballar en equip, en condicions d'alta pressió, amb iniciativa per resoldre problemes eficientment i aconseguir les fites i objectius traçats per l'empresa.",
+    "links": {
+      "portfolio": "https://enric-domenech.dev",
+      "linkedin": "https://www.linkedin.com/in/enric-domènech-aisa-1384941aa/",
+      "github": "https://github.com/enric-domenech-dev"
+    }
+  },
+  "education": [
+    {
+      "degree": "Grau Superior de Desenvolupament d'Aplicacions Multiplataforma",
+      "institution": "STUCOM Centre d'Estudis",
+      "status": "en curs",
+      "year": "23'"
+    },
+    {
+      "degree": "Grau Superior d'Animació d'Activitats Físico-Esportives",
+      "institution": "Institut Vall d'Hebron",
+      "year": "16'-18'"
+    },
+    {
+      "degree": "Grau en Enginyeria de Sistemes de Telecomunicació",
+      "institution": "Universitat Politècnica de Catalunya",
+      "status": "en pausa",
+      "year": "15'-"
+    }
+  ],
+  "experience": [
+    {
+      "company": "SOPRA STERIA",
+      "position": "iOS Developer",
+      "duration": "1 año",
+      "description": "Programació d'APPs com a Junior Developer",
+      "startDate": "2023"
+    },
+    {
+      "company": "FC BARCELONA",
+      "position": "IT Technical Support",
+      "duration": "6 meses",
+      "description": "Servei tècnic de les instal·lacions del club esportiu",
+      "startDate": "2022"
+    },
+    {
+      "company": "TIBIDABO",
+      "position": "Operario",
+      "duration": "6 meses",
+      "description": "Preparació de l'aliment i neteja de l'instal·lació",
+      "startDate": "2021"
+    },
+    {
+      "company": "TOTAL FRESH",
+      "position": "Transitario",
+      "duration": "2 años",
+      "description": "Coordinació de transport per aire, mar i terra",
+      "startDate": "2019"
+    },
+    {
+      "company": "SPORTEVO",
+      "position": "Entrenador Personal",
+      "duration": "3 meses",
+      "description": "Supervisió de tots els clients i les instal·lacions",
+      "startDate": "2018"
+    },
+    {
+      "company": "ELIEM / EXSER",
+      "position": "Operari",
+      "duration": "1 año",
+      "description": "Realització de serveis relacionals amb la empresa",
+      "startDate": "2017"
+    }
+  ],
+  "skills": {
+    "mobile": ["Android", "Kotlin", "Kotlin Multiplatform", "Jetpack Compose", "Flutter", "Dart", "Java"],
+    "backend": ["Spring Boot", "MySQL", "Hibernate", "Room", "C++", "C#", "JavaScript", "PHP"],
+    "frontend": ["HTML", "CSS", "JavaScript", "jQuery", "Swift"],
+    "databases": ["DDL", "DML", "DCL", "TCL", "SQL"],
+    "gamedev": ["Unity", "2D Development"],
+    "tools": ["Visual Studio", "Eclipse", "Xcode", "Android Studio", "VS Code", "Git", "GitHub", "CI/CD", "TDD"],
+    "other": ["Office", "Outlook", "Teams"]
+  },
+  "languages": [
+    {
+      "language": "Català",
+      "level": "C1 - Domini Eficaç"
+    },
+    {
+      "language": "Castellà",
+      "level": "C1 - Domini Eficaç"
+    },
+    {
+      "language": "Anglès",
+      "level": "B1 - Llindar"
+    }
+  ]
+}
