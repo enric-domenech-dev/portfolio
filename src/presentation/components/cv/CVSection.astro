@@ -1,0 +1,128 @@
+---
+import type { CVData } from '@/core/cv/domain/models/CVData';
+import { CV_LABELS, PDF_EXPORT_OPTIONS } from '@/core/cv/constants';
+import { joinList } from '@/core/shared/utils/formatters';
+import Badge from '../shared/Badge.astro';
+import Card from '../shared/Card.astro';
+
+interface Props {
+  cvData: CVData;
+}
+
+const { cvData } = Astro.props;
+const cvSkillCategories = cvData.skills.filter((category) => category.showInCv);
+---
+
+<div class="max-w-5xl mx-auto p-4 md:p-6">
+  <div class="glass-card flex flex-wrap gap-3 mb-6 print:hidden sticky top-4 z-10 p-4">
+    <button
+      id="downloadBtn"
+      class="inline-flex items-center gap-2 bg-primary-500 text-white px-6 py-2.5 rounded-full hover:bg-primary-600 hover:-translate-y-0.5 transition duration-300 shadow-glow"
+    >
+      <span>⬇️</span> {CV_LABELS.downloadPdf}
+    </button>
+    <button
+      id="printBtn"
+      class="inline-flex items-center gap-2 bg-secondary-500 text-white px-6 py-2.5 rounded-full hover:bg-secondary-600 hover:-translate-y-0.5 transition duration-300 shadow-soft"
+    >
+      <span>🖨️</span> {CV_LABELS.print}
+    </button>
+  </div>
+
+  <div id="cvContent" class="neo-panel p-6 md:p-10 print:bg-white print:shadow-none print:p-0">
+    <div class="mb-8 pb-8 border-b border-slate-300/60">
+      <p class="uppercase tracking-[0.24em] text-xs text-primary-500 mb-2">{CV_LABELS.eyebrow}</p>
+      <h1 class="text-4xl font-extrabold text-primary-600 mb-2">{cvData.personal.name}</h1>
+      <p class="text-xl text-slate-600 mb-4">{cvData.personal.title}</p>
+      <p class="text-slate-700 mb-4 leading-relaxed">{cvData.personal.bio}</p>
+
+      <div class="grid sm:grid-cols-2 gap-3 text-sm">
+        <Card variant="glass" class="!rounded-xl !shadow-none p-3">📧 {cvData.personal.email}</Card>
+        <Card variant="glass" class="!rounded-xl !shadow-none p-3">📱 {cvData.personal.phone}</Card>
+        <Card variant="glass" class="!rounded-xl !shadow-none p-3">📍 {cvData.personal.location}</Card>
+        <Card variant="glass" class="!rounded-xl !shadow-none p-3">🎂 {cvData.personal.birthDate}</Card>
+      </div>
+    </div>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-primary-600 mb-4">{CV_LABELS.educationTitle}</h2>
+      <div class="space-y-4">
+        {cvData.education.map((edu) => (
+          <Card variant="glass" class="!rounded-2xl p-4">
+            <h3 class="font-bold">{edu.degree}</h3>
+            <p class="text-slate-600">{edu.institution}</p>
+            <p class="text-sm text-slate-500 mt-1">{edu.year}{edu.status && ` · ${edu.status}`}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-primary-600 mb-4">{CV_LABELS.experienceTitle}</h2>
+      <div class="space-y-4">
+        {cvData.experience.map((exp) => (
+          <Card variant="glass" class="!rounded-2xl p-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-bold">{exp.position}</h3>
+                <p class="text-slate-600">{exp.company}</p>
+              </div>
+              <Badge variant="pill">{exp.duration}</Badge>
+            </div>
+            <p class="text-sm text-slate-700 mt-2">{exp.description}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold text-primary-600 mb-4">{CV_LABELS.skillsTitle}</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {cvSkillCategories.map((category) => (
+          <div>
+            <h3 class="font-bold mb-2">{category.cvTitle}</h3>
+            <p class="text-sm text-slate-700">{joinList(category.items)}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-primary-600 mb-4">{CV_LABELS.languagesTitle}</h2>
+      <div class="grid sm:grid-cols-3 gap-3">
+        {cvData.languages.map((lang) => (
+          <Card variant="glass" class="!rounded-xl !shadow-none p-3 text-sm">
+            <p class="font-bold">{lang.language}</p>
+            <p class="text-slate-600">{lang.level}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script is:inline define:vars={{ pdfOptions: PDF_EXPORT_OPTIONS }}>
+  document.getElementById('downloadBtn')?.addEventListener('click', function () {
+    const element = document.getElementById('cvContent');
+    // @ts-ignore - html2pdf is loaded globally from the CDN script above
+    html2pdf().set(pdfOptions).from(element).save();
+  });
+
+  document.getElementById('printBtn')?.addEventListener('click', function () {
+    window.print();
+  });
+</script>
+
+<style>
+  @media print {
+    body {
+      background: white;
+    }
+    #cvContent {
+      box-shadow: none;
+      margin: 0;
+      border-radius: 0;
+    }
+  }
+</style>

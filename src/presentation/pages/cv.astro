@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CVSection from '../components/cv/CVSection.astro';
+import { container } from '@/core/di/container';
+import { CV_LABELS } from '@/core/cv/constants';
+
+const cvData = container.getCVData.execute();
+---
+
+<Layout title={CV_LABELS.pageTitle}>
+  <CVSection cvData={cvData} />
+</Layout>
