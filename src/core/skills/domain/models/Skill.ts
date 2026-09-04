@@ -1,3 +1,5 @@
+import type { IconName } from '@/core/shared/constants/icons';
+
 export type SkillCategoryKey =
   | 'mobile'
   | 'backend'
@@ -12,5 +14,6 @@ export interface SkillCategory {
   title: string;
   cvTitle: string;
   showInCv: boolean;
+  icon: IconName;
   items: string[];
 }

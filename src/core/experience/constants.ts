@@ -1,4 +1,4 @@
 export const EXPERIENCE_SECTION = {
   title: 'Experiencia Profesional',
-  eyebrow: '💼 Carrera',
+  eyebrow: 'Carrera',
 } as const;

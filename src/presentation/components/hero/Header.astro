@@ -1,7 +1,7 @@
 ---
 import type { PersonalInfo } from '@/core/cv/domain/models/CVData';
-import { mailtoHref, telHref } from '@/core/shared/utils/formatters';
 import Button from '../shared/Button.astro';
+import Icon from '../shared/Icon.astro';
 import { AVATAR_SRC, HERO_LABELS } from './constants';
 
 interface Props {
@@ -27,24 +27,23 @@ const { personal } = Astro.props;
       <p class="text-xl md:text-2xl font-medium text-indigo-100 mb-5">{personal.title}</p>
       <p class="text-slate-100/95 max-w-3xl mb-8 text-base md:text-lg">{personal.bio}</p>
 
-      <div class="flex flex-wrap gap-3 text-sm md:text-base text-slate-100 mb-8">
-        <a href={mailtoHref(personal.email)} class="glass-card !rounded-full !shadow-none px-4 py-2 hover:-translate-y-0.5 transition duration-300">
-          📧 {personal.email}
-        </a>
-        <a href={telHref(personal.phone)} class="glass-card !rounded-full !shadow-none px-4 py-2 hover:-translate-y-0.5 transition duration-300">
-          📱 {personal.phone}
-        </a>
-        <span class="glass-card !rounded-full !shadow-none px-4 py-2">📍 {personal.location}</span>
-      </div>
-
       <div class="flex flex-wrap gap-4">
-        <Button href="/experiencia" variant="solid">{HERO_LABELS.exploreExperience}</Button>
+        <Button href="/experiencia" variant="solid">
+          {HERO_LABELS.exploreExperience}
+          <Icon name="arrow-right" size={16} />
+        </Button>
         <Button href="/cv" variant="outline">{HERO_LABELS.viewFullCv}</Button>
         {personal.links.linkedin && (
-          <Button href={personal.links.linkedin} variant="outline" target="_blank" rel="noopener noreferrer">{HERO_LABELS.linkedin}</Button>
+          <Button href={personal.links.linkedin} variant="outline" target="_blank" rel="noopener noreferrer">
+            <Icon name="linkedin" size={16} />
+            {HERO_LABELS.linkedin}
+          </Button>
         )}
         {personal.links.github && (
-          <Button href={personal.links.github} variant="outline" target="_blank" rel="noopener noreferrer">{HERO_LABELS.github}</Button>
+          <Button href={personal.links.github} variant="outline" target="_blank" rel="noopener noreferrer">
+            <Icon name="github" size={16} />
+            {HERO_LABELS.github}
+          </Button>
         )}
       </div>
     </div>

@@ -4,6 +4,7 @@ import { CV_LABELS, PDF_EXPORT_OPTIONS } from '@/core/cv/constants';
 import { joinList } from '@/core/shared/utils/formatters';
 import Badge from '../shared/Badge.astro';
 import Card from '../shared/Card.astro';
+import Icon from '../shared/Icon.astro';
 
 interface Props {
   cvData: CVData;
@@ -19,13 +20,13 @@ const cvSkillCategories = cvData.skills.filter((category) => category.showInCv);
       id="downloadBtn"
       class="inline-flex items-center gap-2 bg-primary-500 text-white px-6 py-2.5 rounded-full hover:bg-primary-600 hover:-translate-y-0.5 transition duration-300 shadow-glow"
     >
-      <span>⬇️</span> {CV_LABELS.downloadPdf}
+      <Icon name="download" size={18} /> {CV_LABELS.downloadPdf}
     </button>
     <button
       id="printBtn"
       class="inline-flex items-center gap-2 bg-secondary-500 text-white px-6 py-2.5 rounded-full hover:bg-secondary-600 hover:-translate-y-0.5 transition duration-300 shadow-soft"
     >
-      <span>🖨️</span> {CV_LABELS.print}
+      <Icon name="printer" size={18} /> {CV_LABELS.print}
     </button>
   </div>
 
@@ -37,10 +38,10 @@ const cvSkillCategories = cvData.skills.filter((category) => category.showInCv);
       <p class="text-slate-700 dark:text-slate-200 mb-4 leading-relaxed">{cvData.personal.bio}</p>
 
       <div class="grid sm:grid-cols-2 gap-3 text-sm">
-        <Card variant="glass" class="!rounded-xl !shadow-none p-3">📧 {cvData.personal.email}</Card>
-        <Card variant="glass" class="!rounded-xl !shadow-none p-3">📱 {cvData.personal.phone}</Card>
-        <Card variant="glass" class="!rounded-xl !shadow-none p-3">📍 {cvData.personal.location}</Card>
-        <Card variant="glass" class="!rounded-xl !shadow-none p-3">🎂 {cvData.personal.birthDate}</Card>
+        <Card variant="glass" class="!rounded-xl !shadow-none p-3 flex items-center gap-2"><Icon name="mail" size={16} /> {cvData.personal.email}</Card>
+        <Card variant="glass" class="!rounded-xl !shadow-none p-3 flex items-center gap-2"><Icon name="phone" size={16} /> {cvData.personal.phone}</Card>
+        <Card variant="glass" class="!rounded-xl !shadow-none p-3 flex items-center gap-2"><Icon name="map-pin" size={16} /> {cvData.personal.location}</Card>
+        <Card variant="glass" class="!rounded-xl !shadow-none p-3 flex items-center gap-2"><Icon name="cake" size={16} /> {cvData.personal.birthDate}</Card>
       </div>
     </div>
 

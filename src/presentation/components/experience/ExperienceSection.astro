@@ -5,6 +5,7 @@ import { STAGGER_STEP_MS } from '@/core/shared/constants/animations';
 import { staggerDelay } from '@/core/shared/utils/formatters';
 import Badge from '../shared/Badge.astro';
 import Card from '../shared/Card.astro';
+import Icon from '../shared/Icon.astro';
 
 interface Props {
   items: Experience[];
@@ -23,7 +24,10 @@ const { items } = Astro.props;
           <span class="absolute -left-6 md:-left-9 top-9 h-4 w-4 rounded-full bg-primary-500 ring-4 ring-primary-200/60"></span>
           <div class="flex flex-wrap justify-between items-start gap-3 mb-3">
             <div>
-              <p class="text-xs uppercase tracking-[0.2em] text-primary-500 mb-2">{EXPERIENCE_SECTION.eyebrow}</p>
+              <p class="flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-primary-500 mb-2">
+                <Icon name="briefcase" size={14} />
+                {EXPERIENCE_SECTION.eyebrow}
+              </p>
               <h3 class="text-xl md:text-2xl font-bold text-slate-900 dark:text-slate-100">{exp.position}</h3>
               <p class="text-base md:text-lg text-slate-600 dark:text-slate-300">{exp.company}</p>
             </div>

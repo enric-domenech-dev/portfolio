@@ -1,0 +1,27 @@
+---
+import { ICONS, type IconName } from '@/core/shared/constants/icons';
+
+interface Props {
+  name: IconName;
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 20, class: className } = Astro.props;
+const icon = ICONS[name];
+const isStroke = icon.fill === 'none';
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox={icon.viewBox}
+  fill={icon.fill}
+  stroke={isStroke ? 'currentColor' : undefined}
+  stroke-width={isStroke ? 2 : undefined}
+  stroke-linecap={isStroke ? 'round' : undefined}
+  stroke-linejoin={isStroke ? 'round' : undefined}
+  aria-hidden="true"
+  class={className}
+  set:html={icon.inner}
+/>

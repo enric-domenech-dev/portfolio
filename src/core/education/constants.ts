@@ -1,6 +1,6 @@
 export const EDUCATION_SECTION = {
   title: 'Formación Académica',
-  eyebrow: '🎓 Educación',
+  eyebrow: 'Educación',
 } as const;
 
 export const EDUCATION_LEVEL_TITLES = {
