@@ -3,4 +3,5 @@ export interface EducationDto {
   institution: string;
   year: string;
   status?: string;
+  level: 'superior' | 'universitari';
 }

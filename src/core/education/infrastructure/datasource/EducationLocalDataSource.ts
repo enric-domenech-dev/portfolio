@@ -3,6 +3,6 @@ import type { EducationDto } from '../dto/EducationDto';
 
 export class EducationLocalDataSource {
   getAll(): EducationDto[] {
-    return cvData.education;
+    return cvData.education as EducationDto[];
   }
 }

@@ -1,6 +1,6 @@
 ---
-import type { Education } from '@/core/education/domain/models/Education';
-import { EDUCATION_SECTION } from '@/core/education/constants';
+import type { Education, EducationLevel } from '@/core/education/domain/models/Education';
+import { EDUCATION_SECTION, EDUCATION_LEVEL_TITLES } from '@/core/education/constants';
 import { STAGGER_STEP_MS } from '@/core/shared/constants/animations';
 import { staggerDelay } from '@/core/shared/utils/formatters';
 import Badge from '../shared/Badge.astro';
@@ -11,24 +11,38 @@ interface Props {
 }
 
 const { items } = Astro.props;
+
+const LEVEL_ORDER: EducationLevel[] = ['superior', 'universitari'];
+const groups = LEVEL_ORDER.map((level) => ({
+  level,
+  title: EDUCATION_LEVEL_TITLES[level],
+  items: items.filter((edu) => edu.level === level),
+})).filter((group) => group.items.length > 0);
 ---
 
 <section class="py-12 px-4">
-  <div class="max-w-5xl mx-auto">
+  <div class="max-w-3xl mx-auto">
     <h2 class="section-title">{EDUCATION_SECTION.title}</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-      {items.map((edu, index) => (
-        <Card variant="neo" hover class="p-6 border border-white/70 animate-fade-up" style={staggerDelay(index, STAGGER_STEP_MS.grid)}>
-          <div class="h-1.5 w-full rounded-full bg-gradient-to-r from-primary-500 to-secondary-400 mb-5"></div>
-          <p class="text-xs uppercase tracking-[0.2em] text-primary-500 mb-2">{EDUCATION_SECTION.eyebrow}</p>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">{edu.degree}</h3>
-          <p class="text-slate-600 dark:text-slate-300 mb-4">{edu.institution}</p>
-          <div class="flex justify-between items-center mt-auto">
-            <span class="text-sm text-slate-500 dark:text-slate-400">{edu.year}</span>
-            {edu.status && <Badge variant="status">{edu.status}</Badge>}
+    <div class="space-y-10">
+      {groups.map((group) => (
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-primary-500 mb-4">{group.title}</h3>
+          <div class="grid grid-cols-1 gap-6">
+            {group.items.map((edu, index) => (
+              <Card variant="neo" hover class="p-6 border border-white/70 animate-fade-up" style={staggerDelay(index, STAGGER_STEP_MS.grid)}>
+                <div class="h-1.5 w-full rounded-full bg-gradient-to-r from-primary-500 to-secondary-400 mb-5"></div>
+                <p class="text-xs uppercase tracking-[0.2em] text-primary-500 mb-2">{EDUCATION_SECTION.eyebrow}</p>
+                <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">{edu.degree}</h4>
+                <p class="text-slate-600 dark:text-slate-300 mb-4">{edu.institution}</p>
+                <div class="flex justify-between items-center mt-auto">
+                  <span class="text-sm text-slate-500 dark:text-slate-400">{edu.year}</span>
+                  {edu.status && <Badge variant="status">{edu.status}</Badge>}
+                </div>
+              </Card>
+            ))}
           </div>
-        </Card>
+        </div>
       ))}
     </div>
   </div>

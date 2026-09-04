@@ -19,18 +19,21 @@
       "degree": "Grau Superior de Desenvolupament d'Aplicacions Multiplataforma",
       "institution": "STUCOM Centre d'Estudis",
       "status": "en curs",
-      "year": "23'"
+      "year": "23' - 25'",
+      "level": "superior"
     },
     {
       "degree": "Grau Superior d'Animació d'Activitats Físico-Esportives",
       "institution": "Institut Vall d'Hebron",
-      "year": "16'-18'"
+      "year": "16'-18'",
+      "level": "superior"
     },
     {
       "degree": "Grau en Enginyeria de Sistemes de Telecomunicació",
       "institution": "Universitat Politècnica de Catalunya",
       "status": "en pausa",
-      "year": "15'-"
+      "year": "15' - 3 de 4 anys cursats",
+      "level": "universitari"
     }
   ],
   "experience": [
