@@ -21,6 +21,7 @@ export type IconName =
   | 'arrow-right'
   | 'external-link'
   | 'code'
+  | 'chevron-down'
   | 'github'
   | 'linkedin';
 
@@ -156,6 +157,11 @@ export const ICONS: Record<IconName, IconDef> = {
     viewBox: '0 0 24 24',
     fill: 'none',
     inner: '<path d="m16 18 6-6-6-6" /><path d="m8 6-6 6 6 6" />',
+  },
+  'chevron-down': {
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    inner: '<path d="m6 9 6 6 6-6" />',
   },
   github: {
     viewBox: '0 0 24 24',

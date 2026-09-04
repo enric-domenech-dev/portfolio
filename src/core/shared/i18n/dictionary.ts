@@ -13,10 +13,12 @@ export interface Dictionary {
   };
   drawer: {
     menu: string;
+    navLabel: string;
     openLabel: string;
     closeLabel: string;
     themeDark: string;
     themeLight: string;
+    themeSwitchLabel: string;
     languageLabel: string;
   };
   hero: {
@@ -75,10 +77,12 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
     },
     drawer: {
       menu: 'Menú',
+      navLabel: 'Navegación principal',
       openLabel: 'Abrir menú de navegación',
       closeLabel: 'Cerrar menú de navegación',
       themeDark: 'Oscuro',
       themeLight: 'Claro',
+      themeSwitchLabel: 'Cambiar a tema',
       languageLabel: 'Idioma',
     },
     hero: {
@@ -150,10 +154,12 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
     },
     drawer: {
       menu: 'Menú',
+      navLabel: 'Navegació principal',
       openLabel: 'Obrir menú de navegació',
       closeLabel: 'Tancar menú de navegació',
       themeDark: 'Fosc',
       themeLight: 'Clar',
+      themeSwitchLabel: 'Canviar a tema',
       languageLabel: 'Idioma',
     },
     hero: {
@@ -221,27 +227,29 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       educacion: 'Education',
       skills: 'Skills',
       contacto: 'Contact',
-      cv: 'Resume',
+      cv: 'CV',
     },
     drawer: {
       menu: 'Menu',
+      navLabel: 'Main navigation',
       openLabel: 'Open navigation menu',
       closeLabel: 'Close navigation menu',
       themeDark: 'Dark',
       themeLight: 'Light',
+      themeSwitchLabel: 'Switch to',
       languageLabel: 'Language',
     },
     hero: {
       eyebrow: 'Professional Portfolio',
       exploreExperience: 'Explore experience',
-      viewFullCv: 'View full resume',
+      viewFullCv: 'View full CV',
       linkedin: 'LinkedIn',
       github: 'GitHub',
     },
     quickAccess: {
       proyectos: { title: 'Projects', description: 'Personal projects and featured work.' },
       skills: { title: 'Skills', description: 'Technologies and technical skills.' },
-      cv: { title: 'Full resume', description: 'Downloadable, printable document.' },
+      cv: { title: 'Full CV', description: 'Downloadable, printable document.' },
       educacion: { title: 'Education', description: 'Academic background and degrees.' },
     },
     experience: { title: 'Professional Experience', eyebrow: 'Career' },
@@ -274,7 +282,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       intro: 'Have a proposal or want to know more? These are the most direct ways to reach me.',
     },
     cv: {
-      pageTitle: 'Resume - Enric Domènech',
+      pageTitle: 'CV - Enric Domènech',
       eyebrow: 'Curriculum Vitae',
       downloadPdf: 'Download PDF',
       print: 'Print',

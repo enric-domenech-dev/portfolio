@@ -1,0 +1,218 @@
+---
+import { getDictionary } from '@/core/shared/i18n/dictionary';
+import { LOCALES, LOCALE_LABELS, canonicalPath, localizedPath, resolveLocale } from '@/core/shared/i18n/locale';
+import Icon from '../shared/Icon.astro';
+
+const locale = resolveLocale(Astro.currentLocale);
+const dict = getDictionary(locale);
+const currentPath = Astro.url.pathname;
+const canonical = canonicalPath(currentPath, locale);
+
+const languageOptions = LOCALES.map((loc) => ({
+  locale: loc,
+  label: LOCALE_LABELS[loc],
+  href: localizedPath(canonical, loc),
+  active: loc === locale,
+}));
+---
+
+<header id="topBar" class="fixed top-0 inset-x-0 z-[70] print:hidden">
+  <div class="glass-card !rounded-none !border-x-0 !border-t-0 flex items-center justify-between px-4 py-3">
+    <button
+      id="drawerToggle"
+      class="flex items-center justify-center w-10 h-10 rounded-full text-slate-700 dark:text-slate-100 hover:bg-white/40 dark:hover:bg-white/10 transition duration-200"
+      aria-expanded="false"
+      aria-controls="siteDrawer"
+      aria-label={dict.drawer.openLabel}
+      data-open-label={dict.drawer.openLabel}
+      data-close-label={dict.drawer.closeLabel}
+    >
+      <span id="drawerIconMenu" class="inline-flex"><Icon name="menu" /></span>
+      <span id="drawerIconClose" class="hidden"><Icon name="close" /></span>
+    </button>
+
+    <div class="flex items-center gap-2">
+      <div class="relative">
+        <button
+          id="langToggle"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-label={dict.drawer.languageLabel}
+          class="flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold uppercase text-slate-700 dark:text-slate-100 hover:bg-white/40 dark:hover:bg-white/10 transition duration-200"
+        >
+          {locale}
+          <Icon name="chevron-down" size={14} />
+        </button>
+        <ul id="langMenu" role="listbox" class="hidden absolute right-0 mt-2 w-40 rounded-2xl glass-card p-1.5 z-[80]">
+          {languageOptions.map((option) => (
+            <li>
+              {option.active ? (
+                <span
+                  role="option"
+                  aria-selected="true"
+                  class="flex items-center justify-between rounded-xl px-3 py-2 text-sm bg-primary-100 text-primary-700 dark:bg-primary-500/20 dark:text-primary-200"
+                >
+                  <span>{option.label}</span>
+                  <span class="text-xs uppercase text-primary-400">{option.locale}</span>
+                </span>
+              ) : (
+                <a
+                  href={option.href}
+                  role="option"
+                  aria-selected="false"
+                  class="flex items-center justify-between rounded-xl px-3 py-2 text-sm transition duration-150 text-slate-700 hover:bg-white/40 dark:text-slate-200 dark:hover:bg-white/10"
+                >
+                  <span>{option.label}</span>
+                  <span class="text-xs uppercase text-slate-400">{option.locale}</span>
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <button
+        id="themeToggle"
+        role="switch"
+        aria-checked="false"
+        aria-label={dict.drawer.themeSwitchLabel}
+        class="relative inline-flex h-8 w-14 items-center rounded-full bg-slate-300 dark:bg-primary-600 transition-colors duration-300"
+      >
+        <span
+          id="themeSwitchThumb"
+          class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-white shadow-md transition-transform duration-300 translate-x-1 dark:translate-x-7"
+        >
+          <span class="dark:hidden inline-flex text-amber-500"><Icon name="sun" size={14} /></span>
+          <span class="hidden dark:inline-flex text-primary-600"><Icon name="moon" size={14} /></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('drawerToggle');
+  const drawerIconMenu = document.getElementById('drawerIconMenu');
+  const drawerIconClose = document.getElementById('drawerIconClose');
+  const overlay = document.getElementById('drawerOverlay');
+  const panel = document.getElementById('siteDrawer');
+  const pageContent = document.getElementById('pageContent');
+
+  let isDrawerOpen = false;
+
+  function focusableElements(): HTMLElement[] {
+    if (!panel) return [];
+    return Array.from(panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'));
+  }
+
+  function openDrawer() {
+    if (!panel || !overlay || !toggleBtn) return;
+    isDrawerOpen = true;
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    toggleBtn.setAttribute('aria-label', toggleBtn.dataset.closeLabel ?? '');
+    drawerIconMenu?.classList.add('hidden');
+    drawerIconClose?.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+    panel.classList.remove('-translate-x-full');
+    panel.classList.add('translate-x-0');
+    panel.setAttribute('aria-hidden', 'false');
+    pageContent?.setAttribute('inert', '');
+    document.body.style.overflow = 'hidden';
+    const first = focusableElements()[0];
+    first?.focus();
+  }
+
+  function closeDrawer() {
+    if (!panel || !overlay || !toggleBtn) return;
+    isDrawerOpen = false;
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    toggleBtn.setAttribute('aria-label', toggleBtn.dataset.openLabel ?? '');
+    drawerIconMenu?.classList.remove('hidden');
+    drawerIconClose?.classList.add('hidden');
+    overlay.classList.add('hidden');
+    panel.classList.add('-translate-x-full');
+    panel.classList.remove('translate-x-0');
+    panel.setAttribute('aria-hidden', 'true');
+    pageContent?.removeAttribute('inert');
+    document.body.style.overflow = '';
+    toggleBtn.focus();
+  }
+
+  toggleBtn?.addEventListener('click', () => (isDrawerOpen ? closeDrawer() : openDrawer()));
+  overlay?.addEventListener('click', closeDrawer);
+
+  document.querySelectorAll('[data-drawer-link]').forEach((link) => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!isDrawerOpen) return;
+
+    if (e.key === 'Escape') {
+      closeDrawer();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const items = focusableElements();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  // Language dropdown
+  const langToggle = document.getElementById('langToggle');
+  const langMenu = document.getElementById('langMenu');
+
+  function closeLangMenu() {
+    langMenu?.classList.add('hidden');
+    langToggle?.setAttribute('aria-expanded', 'false');
+  }
+
+  function openLangMenu() {
+    langMenu?.classList.remove('hidden');
+    langToggle?.setAttribute('aria-expanded', 'true');
+  }
+
+  langToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = langToggle.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeLangMenu() : openLangMenu();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!langMenu || langMenu.classList.contains('hidden')) return;
+    if (e.target instanceof Node && !langMenu.contains(e.target) && e.target !== langToggle) {
+      closeLangMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLangMenu();
+  });
+
+  // Theme switch
+  const themeToggle = document.getElementById('themeToggle');
+
+  function applyTheme(theme: 'light' | 'dark') {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    themeToggle?.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+  }
+
+  applyTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+
+  themeToggle?.addEventListener('click', () => {
+    const next = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+    localStorage.setItem('theme', next);
+    applyTheme(next);
+  });
+</script>

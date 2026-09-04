@@ -1,5 +1,6 @@
 ---
 import '../../styles/global.css';
+import TopBar from '../components/topbar/TopBar.astro';
 import Drawer from '../components/drawer/Drawer.astro';
 import { getSiteDefaults } from '@/core/shared/constants/ui';
 import { resolveLocale } from '@/core/shared/i18n/locale';
@@ -30,7 +31,8 @@ const { title, description = siteDefaults.description } = Astro.props;
     </script>
   </head>
   <body>
+    <TopBar />
     <Drawer />
-    <div id="pageContent" class="pt-20"><slot /></div>
+    <div id="pageContent" class="pt-16"><slot /></div>
   </body>
 </html>
