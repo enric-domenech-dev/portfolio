@@ -55,8 +55,8 @@ export default {
       },
       animation: {
         'gradient-shift': 'gradient-shift 12s ease infinite',
-        'fade-up': 'fade-up 700ms ease both',
-        'fade-in': 'fade-in 600ms ease both',
+        'fade-up': 'fade-up 450ms ease both',
+        'fade-in': 'fade-in 350ms ease both',
       },
       transitionDuration: {
         400: '400ms',
