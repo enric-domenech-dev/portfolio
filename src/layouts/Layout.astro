@@ -5,6 +5,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+import '../styles/global.css';
 ---
 
 <!doctype html>
@@ -15,20 +16,7 @@ const { title, description } = Astro.props;
     <meta name="description" content={description || 'Portfolio profesional de Enric Domènech - Full-Stack & Mobile Developer'} />
     <title>{title}</title>
   </head>
-  <body class="bg-gray-50 text-gray-900">
+  <body>
     <slot />
   </body>
 </html>
-
-<style is:global>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    line-height: 1.6;
-  }
-</style>

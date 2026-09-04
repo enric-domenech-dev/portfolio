@@ -6,29 +6,32 @@ interface Props {
 const { skills } = Astro.props;
 
 const skillsCategories = [
-  { title: '📱 Mobile & Frontend', skills: skills.mobile },
-  { title: '☕ Backend & Database', skills: skills.backend },
+  { title: '📱 Mobile', skills: skills.mobile },
+  { title: '🧠 Backend', skills: skills.backend },
+  { title: '🖥️ Frontend', skills: skills.frontend },
+  { title: '🗄️ Databases', skills: skills.databases },
   { title: '🎮 Game Development', skills: skills.gamedev },
   { title: '🛠️ Dev Tools', skills: skills.tools },
+  { title: '✨ Otras', skills: skills.other },
 ];
 ---
 
-<section class="py-12 px-4 bg-gray-100">
-  <div class="max-w-4xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8 text-indigo-600">Competencias</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {skillsCategories.map((category) => (
-        <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="text-lg font-bold mb-4">{category.title}</h3>
-          <div class="flex flex-wrap gap-2">
-            {category.skills.map((skill) => (
-              <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">
+<section class="py-14 px-4">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="section-title">Competencias</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {skillsCategories.map((category, categoryIndex) => (
+        <article class="glass-card p-6 animate-fade-up" style={`animation-delay:${categoryIndex * 120}ms`}>
+          <h3 class="text-lg font-bold mb-4 text-slate-900 dark:text-slate-100">{category.title}</h3>
+          <div class="flex flex-wrap gap-2.5">
+            {category.skills.map((skill, skillIndex) => (
+              <span class="rounded-full border border-primary-200 bg-white/80 text-primary-700 px-3 py-1.5 text-sm font-medium shadow-sm transition duration-300 hover:scale-105 hover:-translate-y-0.5 hover:shadow-glow animate-fade-in" style={`animation-delay:${skillIndex * 50}ms`}>
                 {skill}
               </span>
             ))}
           </div>
-        </div>
+        </article>
       ))}
     </div>
   </div>
