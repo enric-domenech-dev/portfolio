@@ -1,0 +1,23 @@
+[
+  {
+    "title": "TODO: Nombre del proyecto 1",
+    "description": "TODO: descripción breve — qué problema resuelve, tu rol y el resultado.",
+    "stack": ["Kotlin", "Android", "Jetpack Compose"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "TODO: Nombre del proyecto 2",
+    "description": "TODO: descripción breve — qué problema resuelve, tu rol y el resultado.",
+    "stack": ["Flutter", "Spring Boot"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "TODO: Nombre del proyecto 3",
+    "description": "TODO: descripción breve — qué problema resuelve, tu rol y el resultado.",
+    "stack": ["Kotlin Multiplatform"],
+    "repoUrl": "",
+    "demoUrl": ""
+  }
+]

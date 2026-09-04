@@ -19,6 +19,8 @@ export type IconName =
   | 'sun'
   | 'moon'
   | 'arrow-right'
+  | 'external-link'
+  | 'code'
   | 'github'
   | 'linkedin';
 
@@ -144,6 +146,16 @@ export const ICONS: Record<IconName, IconDef> = {
     viewBox: '0 0 24 24',
     fill: 'none',
     inner: '<path d="M5 12h14" /><path d="m12 5 7 7-7 7" />',
+  },
+  'external-link': {
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    inner: '<path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />',
+  },
+  code: {
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    inner: '<path d="m16 18 6-6-6-6" /><path d="m8 6-6 6 6 6" />',
   },
   github: {
     viewBox: '0 0 24 24',

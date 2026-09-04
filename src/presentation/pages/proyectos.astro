@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectsSection from '../components/projects/ProjectsSection.astro';
+import { container } from '@/core/di/container';
+import { PROJECTS_SECTION } from '@/core/projects/constants';
+import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+
+const items = container.getProjects.execute();
+---
+
+<Layout title={`${PROJECTS_SECTION.title} - ${SITE_DEFAULTS.title}`}>
+  <ProjectsSection items={items} />
+</Layout>

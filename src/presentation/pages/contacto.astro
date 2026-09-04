@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/contact/ContactSection.astro';
+import { container } from '@/core/di/container';
+import { CONTACT_SECTION } from '../components/contact/constants';
+import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+
+const cvData = container.getCVData.execute();
+---
+
+<Layout title={`${CONTACT_SECTION.title} - ${SITE_DEFAULTS.title}`}>
+  <ContactSection personal={cvData.personal} />
+</Layout>

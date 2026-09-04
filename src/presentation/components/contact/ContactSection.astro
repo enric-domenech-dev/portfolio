@@ -1,0 +1,71 @@
+---
+import type { PersonalInfo } from '@/core/cv/domain/models/CVData';
+import { mailtoHref, telHref } from '@/core/shared/utils/formatters';
+import { CONTACT_SECTION } from './constants';
+import Card from '../shared/Card.astro';
+import Icon from '../shared/Icon.astro';
+
+interface Props {
+  personal: PersonalInfo;
+}
+
+const { personal } = Astro.props;
+---
+
+<section class="py-12 px-4">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="section-title">{CONTACT_SECTION.title}</h2>
+    <p class="text-slate-600 dark:text-slate-300 -mt-6 mb-8 max-w-xl">{CONTACT_SECTION.intro}</p>
+
+    <div class="grid sm:grid-cols-2 gap-4">
+      <Card variant="glass" hover class="p-5">
+        <a href={mailtoHref(personal.email)} class="flex items-center gap-3">
+          <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200">
+            <Icon name="mail" size={18} />
+          </span>
+          <span class="text-slate-800 dark:text-slate-100 font-medium">{personal.email}</span>
+        </a>
+      </Card>
+
+      <Card variant="glass" hover class="p-5">
+        <a href={telHref(personal.phone)} class="flex items-center gap-3">
+          <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200">
+            <Icon name="phone" size={18} />
+          </span>
+          <span class="text-slate-800 dark:text-slate-100 font-medium">{personal.phone}</span>
+        </a>
+      </Card>
+
+      <Card variant="glass" class="p-5">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200">
+            <Icon name="map-pin" size={18} />
+          </span>
+          <span class="text-slate-800 dark:text-slate-100 font-medium">{personal.location}</span>
+        </div>
+      </Card>
+
+      {personal.links.linkedin && (
+        <Card variant="glass" hover class="p-5">
+          <a href={personal.links.linkedin} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200">
+              <Icon name="linkedin" size={18} />
+            </span>
+            <span class="text-slate-800 dark:text-slate-100 font-medium">LinkedIn</span>
+          </a>
+        </Card>
+      )}
+
+      {personal.links.github && (
+        <Card variant="glass" hover class="p-5">
+          <a href={personal.links.github} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200">
+              <Icon name="github" size={18} />
+            </span>
+            <span class="text-slate-800 dark:text-slate-100 font-medium">GitHub</span>
+          </a>
+        </Card>
+      )}
+    </div>
+  </div>
+</section>
