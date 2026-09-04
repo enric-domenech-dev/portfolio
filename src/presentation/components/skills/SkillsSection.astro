@@ -1,0 +1,35 @@
+---
+import type { SkillCategory } from '@/core/skills/domain/models/Skill';
+import { SKILLS_SECTION } from '@/core/skills/constants';
+import { STAGGER_STEP_MS } from '@/core/shared/constants/animations';
+import { staggerDelay } from '@/core/shared/utils/formatters';
+import Badge from '../shared/Badge.astro';
+import Card from '../shared/Card.astro';
+
+interface Props {
+  categories: SkillCategory[];
+}
+
+const { categories } = Astro.props;
+---
+
+<section class="py-14 px-4">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="section-title">{SKILLS_SECTION.title}</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {categories.map((category, categoryIndex) => (
+        <Card variant="glass" class="p-6 animate-fade-up" style={staggerDelay(categoryIndex, STAGGER_STEP_MS.grid)}>
+          <h3 class="text-lg font-bold mb-4 text-slate-900 dark:text-slate-100">{category.title}</h3>
+          <div class="flex flex-wrap gap-2.5">
+            {category.items.map((skill, skillIndex) => (
+              <Badge variant="chip" class="animate-fade-in" style={staggerDelay(skillIndex, STAGGER_STEP_MS.chips)}>
+                {skill}
+              </Badge>
+            ))}
+          </div>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>

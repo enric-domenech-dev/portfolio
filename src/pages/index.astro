@@ -1,34 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Header from '../components/Header.astro';
-import Experience from '../components/Experience.astro';
-import Education from '../components/Education.astro';
-import Skills from '../components/Skills.astro';
-import cvData from '../data/cv.json';
+import IndexPage from '../presentation/pages/index.astro';
 ---
 
-<Layout title="Portfolio - Enric Domènech" description="Portfolio profesional de Enric Domènech - Full-Stack & Mobile Developer">
-  <div id="top"></div>
-  <Navbar personal={cvData.personal} />
-  <Header personal={cvData.personal} />
-
-  <main class="space-y-4 md:space-y-8 pb-12">
-    <div id="experience" class="scroll-mt-28">
-      <Experience items={cvData.experience} />
-    </div>
-    <div id="education" class="scroll-mt-28">
-      <Education items={cvData.education} />
-    </div>
-    <div id="skills" class="scroll-mt-28">
-      <Skills skills={cvData.skills} />
-    </div>
-  </main>
-
-  <footer class="px-4 pb-8">
-    <div class="glass-card max-w-5xl mx-auto text-center p-8">
-      <p class="font-semibold text-slate-800 dark:text-slate-100">&copy; 2026 Enric Domènech. Todos los derechos reservados.</p>
-      <p class="text-slate-500 dark:text-slate-300 mt-2">Diseñado con Material 3, glassmorphism y micro-interacciones en Astro + Tailwind.</p>
-    </div>
-  </footer>
-</Layout>
+<IndexPage />

@@ -1,0 +1,19 @@
+---
+import { classNames } from '@/core/shared/utils/classNames';
+
+interface Props {
+  variant?: 'glass' | 'neo';
+  hover?: boolean;
+  class?: string;
+  style?: string;
+}
+
+const { variant = 'glass', hover = false, class: className, style } = Astro.props;
+
+const baseClasses = variant === 'glass' ? 'glass-card' : 'neo-panel';
+const hoverClasses = hover ? 'transition duration-400 hover:-translate-y-1 hover:shadow-glow' : '';
+---
+
+<article class={classNames(baseClasses, hoverClasses, className)} style={style}>
+  <slot />
+</article>

@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/navbar/Navbar.astro';
+import Header from '../components/hero/Header.astro';
+import ExperienceSection from '../components/experience/ExperienceSection.astro';
+import EducationSection from '../components/education/EducationSection.astro';
+import SkillsSection from '../components/skills/SkillsSection.astro';
+import { container } from '@/core/di/container';
+import { EXPERIENCE_SECTION } from '@/core/experience/constants';
+import { EDUCATION_SECTION } from '@/core/education/constants';
+import { SKILLS_SECTION } from '@/core/skills/constants';
+import { FOOTER, SITE_DEFAULTS } from '@/core/shared/constants/ui';
+
+const cvData = container.getCVData.execute();
+---
+
+<Layout title={SITE_DEFAULTS.title} description={SITE_DEFAULTS.description}>
+  <div id="top"></div>
+  <Navbar personal={cvData.personal} />
+  <Header personal={cvData.personal} />
+
+  <main class="space-y-4 md:space-y-8 pb-12">
+    <div id={EXPERIENCE_SECTION.id} class="scroll-mt-28">
+      <ExperienceSection items={cvData.experience} />
+    </div>
+    <div id={EDUCATION_SECTION.id} class="scroll-mt-28">
+      <EducationSection items={cvData.education} />
+    </div>
+    <div id={SKILLS_SECTION.id} class="scroll-mt-28">
+      <SkillsSection categories={cvData.skills} />
+    </div>
+  </main>
+
+  <footer class="px-4 pb-8">
+    <div class="glass-card max-w-5xl mx-auto text-center p-8">
+      <p class="font-semibold text-slate-800 dark:text-slate-100">{FOOTER.copyright}</p>
+      <p class="text-slate-500 dark:text-slate-300 mt-2">{FOOTER.tagline}</p>
+    </div>
+  </footer>
+</Layout>

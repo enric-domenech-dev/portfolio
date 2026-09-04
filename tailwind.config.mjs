@@ -5,21 +5,26 @@ export default {
     extend: {
       colors: {
         primary: {
+          50: '#F0F2FF',
+          100: '#E0E4FF',
+          200: '#C2C9FF',
           300: '#8A9BFF',
           400: '#6E82F7',
           500: '#5865F2',
           600: '#4652D9',
           700: '#3741AE',
+          800: '#2C3489',
+          900: '#242B6E',
         },
         secondary: {
+          50: '#EDFCFF',
+          100: '#D6F8FE',
+          200: '#ADF1FD',
           300: '#67E8F9',
           400: '#3DD5F3',
           500: '#18B7E5',
           600: '#0B93C1',
-        },
-        surface: {
-          DEFAULT: '#F7F8FF',
-          dark: '#0F172A',
+          700: '#0A759B',
         },
       },
       fontFamily: {

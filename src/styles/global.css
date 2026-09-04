@@ -26,9 +26,10 @@
   }
 
   body {
-    @apply bg-surface text-slate-900 antialiased;
+    @apply antialiased;
     min-height: 100vh;
     color: var(--text);
+    background-color: var(--bg);
     background-image:
       radial-gradient(circle at 10% 20%, rgba(103, 232, 249, 0.18), transparent 30%),
       radial-gradient(circle at 90% 10%, rgba(88, 101, 242, 0.18), transparent 35%);
