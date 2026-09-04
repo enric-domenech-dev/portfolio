@@ -1,7 +1,6 @@
 import type { SkillCategoryKey } from './domain/models/Skill';
 
 export const SKILLS_SECTION = {
-  id: 'skills',
   title: 'Competencias',
 } as const;
 

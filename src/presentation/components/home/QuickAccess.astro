@@ -1,0 +1,19 @@
+---
+import Card from '../shared/Card.astro';
+import { QUICK_ACCESS_CARDS } from './constants';
+---
+
+<section class="py-12 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {QUICK_ACCESS_CARDS.map((card) => (
+        <Card variant="glass" hover class="p-6">
+          <a href={card.href} class="block">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">{card.title}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">{card.description}</p>
+          </a>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ExperienceSection from '../components/experience/ExperienceSection.astro';
+import { container } from '@/core/di/container';
+import { EXPERIENCE_SECTION } from '@/core/experience/constants';
+import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+
+const items = container.getExperiences.execute();
+---
+
+<Layout title={`${EXPERIENCE_SECTION.title} - ${SITE_DEFAULTS.title}`}>
+  <ExperienceSection items={items} />
+</Layout>

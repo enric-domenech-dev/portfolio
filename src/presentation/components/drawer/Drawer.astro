@@ -1,0 +1,155 @@
+---
+import { NAV_ITEMS } from '@/core/shared/constants/navigation';
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => href === currentPath;
+---
+
+<button
+  id="drawerToggle"
+  class="fixed top-4 left-4 z-[70] glass-card !rounded-full p-3 text-slate-700 dark:text-slate-100 text-xl leading-none print:hidden"
+  aria-expanded="false"
+  aria-controls="siteDrawer"
+  aria-label="Abrir menú de navegación"
+>
+  ☰
+</button>
+
+<div id="drawerOverlay" class="hidden fixed inset-0 bg-slate-900/50 z-[60] print:hidden"></div>
+
+<aside
+  id="siteDrawer"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navegación principal"
+  aria-hidden="true"
+  class="fixed inset-y-0 left-0 z-[65] w-72 md:w-80 -translate-x-full transition-transform duration-300 ease-in-out motion-reduce:transition-none glass-card !rounded-none !border-l-0 !border-y-0 overflow-y-auto print:hidden"
+>
+  <div class="flex items-center justify-between px-6 py-5 border-b border-white/20">
+    <span class="font-semibold text-slate-800 dark:text-slate-100">Menú</span>
+    <button
+      id="drawerClose"
+      class="text-slate-700 dark:text-slate-100 text-xl leading-none"
+      aria-label="Cerrar menú"
+    >
+      ✕
+    </button>
+  </div>
+
+  <nav class="flex flex-col gap-1 px-4 py-6">
+    {NAV_ITEMS.map((item) => (
+      <a
+        href={item.href}
+        data-drawer-link
+        aria-current={isActive(item.href) ? 'page' : undefined}
+        class:list={[
+          'rounded-xl px-4 py-3 text-sm font-medium transition duration-200',
+          isActive(item.href)
+            ? 'bg-primary-100 text-primary-700 dark:bg-primary-500/20 dark:text-primary-200'
+            : 'text-slate-700 hover:bg-white/40 dark:text-slate-200 dark:hover:bg-white/10',
+        ]}
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+
+  <div class="mt-auto px-4 py-5 border-t border-white/20">
+    <button
+      id="themeToggle"
+      class="w-full rounded-xl px-4 py-3 text-sm font-medium text-left text-slate-700 hover:bg-white/40 dark:text-slate-200 dark:hover:bg-white/10 transition duration-200"
+    >
+      🌙 Oscuro
+    </button>
+  </div>
+</aside>
+
+<script>
+  const toggleBtn = document.getElementById('drawerToggle');
+  const closeBtn = document.getElementById('drawerClose');
+  const overlay = document.getElementById('drawerOverlay');
+  const panel = document.getElementById('siteDrawer');
+  const pageContent = document.getElementById('pageContent');
+  const themeToggle = document.getElementById('themeToggle');
+
+  let isOpen = false;
+
+  function focusableElements(): HTMLElement[] {
+    if (!panel) return [];
+    return Array.from(panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'));
+  }
+
+  function openDrawer() {
+    if (!panel || !overlay || !toggleBtn) return;
+    isOpen = true;
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    overlay.classList.remove('hidden');
+    panel.classList.remove('-translate-x-full');
+    panel.classList.add('translate-x-0');
+    panel.setAttribute('aria-hidden', 'false');
+    pageContent?.setAttribute('inert', '');
+    document.body.style.overflow = 'hidden';
+    const first = focusableElements()[0];
+    first?.focus();
+  }
+
+  function closeDrawer() {
+    if (!panel || !overlay || !toggleBtn) return;
+    isOpen = false;
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    overlay.classList.add('hidden');
+    panel.classList.add('-translate-x-full');
+    panel.classList.remove('translate-x-0');
+    panel.setAttribute('aria-hidden', 'true');
+    pageContent?.removeAttribute('inert');
+    document.body.style.overflow = '';
+    toggleBtn.focus();
+  }
+
+  toggleBtn?.addEventListener('click', () => (isOpen ? closeDrawer() : openDrawer()));
+  closeBtn?.addEventListener('click', closeDrawer);
+  overlay?.addEventListener('click', closeDrawer);
+
+  document.querySelectorAll('[data-drawer-link]').forEach((link) => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!isOpen) return;
+
+    if (e.key === 'Escape') {
+      closeDrawer();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const items = focusableElements();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  function applyTheme(theme: 'light' | 'dark') {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    if (themeToggle) {
+      themeToggle.textContent = theme === 'dark' ? '☀️ Claro' : '🌙 Oscuro';
+    }
+  }
+
+  applyTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+
+  themeToggle?.addEventListener('click', () => {
+    const next = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+    localStorage.setItem('theme', next);
+    applyTheme(next);
+  });
+</script>

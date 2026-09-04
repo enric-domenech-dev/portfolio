@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SkillsSection from '../components/skills/SkillsSection.astro';
+import { container } from '@/core/di/container';
+import { SKILLS_SECTION } from '@/core/skills/constants';
+import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+
+const categories = container.getSkills.execute();
+---
+
+<Layout title={`${SKILLS_SECTION.title} - ${SITE_DEFAULTS.title}`}>
+  <SkillsSection categories={categories} />
+</Layout>

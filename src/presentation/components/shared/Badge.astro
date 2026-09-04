@@ -10,7 +10,7 @@ interface Props {
 const { variant = 'pill', class: className, style } = Astro.props;
 
 const variantClasses: Record<NonNullable<Props['variant']>, string> = {
-  chip: 'rounded-full border border-primary-200 bg-white/80 text-primary-700 px-3 py-1.5 text-sm font-medium shadow-sm transition duration-300 hover:scale-105 hover:-translate-y-0.5 hover:shadow-glow',
+  chip: 'rounded-full border border-primary-200 bg-[var(--surface)] text-primary-700 dark:text-primary-200 px-3 py-1.5 text-sm font-medium shadow-sm transition duration-300 hover:scale-105 hover:-translate-y-0.5 hover:shadow-glow',
   pill: 'rounded-full bg-primary-100 text-primary-700 px-3 py-1 text-sm',
   status: 'rounded-full bg-secondary-300/30 text-secondary-600 text-xs font-semibold px-3 py-1',
   neo: 'neo-panel text-sm font-semibold text-primary-700 px-4 py-1.5',

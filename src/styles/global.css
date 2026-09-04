@@ -12,13 +12,11 @@
     --text: #0f172a;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #020617;
-      --surface: rgba(15, 23, 42, 0.58);
-      --surface-border: rgba(148, 163, 184, 0.35);
-      --text: #e2e8f0;
-    }
+  .dark {
+    --bg: #020617;
+    --surface: rgba(15, 23, 42, 0.58);
+    --surface-border: rgba(148, 163, 184, 0.35);
+    --text: #e2e8f0;
   }
 
   html {
@@ -46,7 +44,8 @@
   }
 
   .neo-panel {
-    @apply rounded-3xl bg-white/80 shadow-neo;
+    background: var(--surface);
+    @apply rounded-3xl shadow-neo;
   }
 
   .section-title {

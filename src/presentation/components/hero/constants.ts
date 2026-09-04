@@ -5,3 +5,5 @@ export const HERO_LABELS = {
   linkedin: 'LinkedIn',
   github: 'GitHub',
 } as const;
+
+export const AVATAR_SRC = '/profile.jpg';

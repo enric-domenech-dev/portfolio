@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EducationSection from '../components/education/EducationSection.astro';
+import { container } from '@/core/di/container';
+import { EDUCATION_SECTION } from '@/core/education/constants';
+import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+
+const items = container.getEducation.execute();
+---
+
+<Layout title={`${EDUCATION_SECTION.title} - ${SITE_DEFAULTS.title}`}>
+  <EducationSection items={items} />
+</Layout>
