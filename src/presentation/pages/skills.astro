@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SkillsSection from '../components/skills/SkillsSection.astro';
+import { container } from '@/core/di/container';
+import { getSkillsSection } from '@/core/skills/constants';
+import { getSiteDefaults } from '@/core/shared/constants/ui';
+import { resolveLocale } from '@/core/shared/i18n/locale';
+
+const locale = resolveLocale(Astro.currentLocale);
+const categories = container.getSkills.execute(locale);
+const skillsSection = getSkillsSection(locale);
+const siteDefaults = getSiteDefaults(locale);
+---
+
+<Layout title={`${skillsSection.title} - ${siteDefaults.title}`}>
+  <SkillsSection categories={categories} />
+</Layout>

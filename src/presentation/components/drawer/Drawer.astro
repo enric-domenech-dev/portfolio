@@ -1,0 +1,41 @@
+---
+import { getNavItems } from '@/core/shared/constants/navigation';
+import { getDictionary } from '@/core/shared/i18n/dictionary';
+import { resolveLocale } from '@/core/shared/i18n/locale';
+
+const locale = resolveLocale(Astro.currentLocale);
+const dict = getDictionary(locale);
+const navItems = getNavItems(locale);
+const currentPath = Astro.url.pathname;
+const normalize = (path: string) => (path.length > 1 ? path.replace(/\/+$/, '') : path);
+const isActive = (href: string) => normalize(href) === normalize(currentPath);
+---
+
+<div id="drawerOverlay" class="hidden fixed inset-0 bg-slate-900/50 z-[60] print:hidden"></div>
+
+<aside
+  id="siteDrawer"
+  role="dialog"
+  aria-modal="true"
+  aria-label={dict.drawer.navLabel}
+  aria-hidden="true"
+  class="fixed inset-y-0 left-0 z-[65] w-72 md:w-80 -translate-x-full transition-transform duration-300 ease-in-out motion-reduce:transition-none glass-card !rounded-none !border-l-0 !border-y-0 overflow-y-auto print:hidden pt-16"
+>
+  <nav class="flex flex-col gap-1 px-4 py-6">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        data-drawer-link
+        aria-current={isActive(item.href) ? 'page' : undefined}
+        class:list={[
+          'rounded-xl px-4 py-3 text-sm font-medium transition duration-200',
+          isActive(item.href)
+            ? 'bg-primary-100 text-primary-700 dark:bg-primary-500/20 dark:text-primary-200'
+            : 'text-slate-700 hover:bg-white/40 dark:text-slate-200 dark:hover:bg-white/10',
+        ]}
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+</aside>

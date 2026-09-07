@@ -3,5 +3,6 @@ export interface ExperienceDto {
   position: string;
   duration: string;
   description: string;
+  summary: string;
   startDate?: string;
 }

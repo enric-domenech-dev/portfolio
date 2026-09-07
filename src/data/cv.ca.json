@@ -1,0 +1,83 @@
+{
+  "personal": {
+    "name": "Enric Domènech Aisa",
+    "title": "Software Engineer",
+    "location": "Barcelona, Espanya",
+    "email": "enric.160493@gmail.com",
+    "phone": "+34 650 53 35 51",
+    "birthDate": "16/04/1993",
+    "dni": "47320898P",
+    "bio": "Persona responsable, dinàmica i creativa, amb facilitat d'adaptació i capacitat de treballar en equip, en condicions d'alta pressió, amb iniciativa per resoldre problemes eficientment i aconseguir les fites i objectius traçats per l'empresa.",
+    "tagline": "Android i iOS des d'una única base de codi, amb Kotlin Multiplatform.\nActualment a app2U.",
+    "links": {
+      "portfolio": "https://enric-domenech.dev",
+      "linkedin": "https://www.linkedin.com/in/enric-domènech-aisa-1384941aa/",
+      "github": "https://github.com/enric-domenech-dev"
+    }
+  },
+  "education": [
+    {
+      "degree": "Grau Superior de Desenvolupament d'Aplicacions Multiplataforma",
+      "institution": "STUCOM Centre d'Estudis",
+      "year": "23' - 25'",
+      "level": "superior"
+    },
+    {
+      "degree": "Grau en Enginyeria de Sistemes de Telecomunicació",
+      "institution": "Universitat Politècnica de Catalunya",
+      "status": "en pausa",
+      "year": "15' - 3 de 4 anys cursats",
+      "level": "universitari"
+    }
+  ],
+  "experience": [
+    {
+      "company": "APP2U",
+      "position": "Enginyer de Software",
+      "duration": "1 any 6 mesos",
+      "description": "Treballo en Android i iOS, contribuint a la incorporació de Kotlin Multiplatform a l'equip. Desenvolupo una nova app en Kotlin Multiplatform (encara sense publicar) per a electrodomèstics intel·ligents i mantinc un sistema de gestió d'estoc de magatzem i botiga per a un client retail. He participat en la introducció de desenvolupament assistit per IA (Claude Code) al flux de l'equip: revisions de PR automatitzades, generació de tests JUnit, d'integració i E2E amb IA, i integració d'MCPs (Redmine, Jira, Gmail, Calendar, Figma). També mantinc les llibreries internes d'Android i iOS de l'empresa i vaig modernitzar la plantilla interna de projectes Android.",
+      "summary": "Enginyer de Software en Android i iOS, liderant l'adopció de Kotlin Multiplatform a l'equip. Desenvolupament de noves apps KMP i manteniment de sistemes crítics per a clients retail, a més d'introduir IA (Claude Code) al flux de desenvolupament.",
+      "startDate": "2025"
+    },
+    {
+      "company": "STRATEGYING",
+      "position": "Android Developer (Pràctiques)",
+      "duration": "7 mesos",
+      "description": "Pràctiques del Grau Superior en Desenvolupament d'Aplicacions Multiplataforma. Vaig desenvolupar des de zero Filmaps, una app Android per descobrir localitzacions reals de rodatges de pel·lícules i sèries, utilitzant Kotlin Multiplatform i Jetpack Compose, amb integració de Google Maps, Location Services, Room i Ktor. També vaig liderar en solitari, sense experiència prèvia en la tecnologia, la migració a Kotlin Multiplatform de WeFish, una app Android heretada (Fragments, vistes XML, arquitectura antiga) — el projecte que va despertar el meu interès pel KMP i una de les experiències més gratificants de la meva carrera.",
+      "summary": "Pràctiques del Grau Superior en DAM. Desenvolupament des de zero de Filmaps amb Kotlin Multiplatform i Jetpack Compose, i migració a KMP d'una app heretada — el projecte que va despertar el meu interès per aquesta tecnologia.",
+      "startDate": "2024"
+    },
+    {
+      "company": "SOPRA STERIA",
+      "position": "iOS Developer (Pràctiques)",
+      "duration": "1 any 1 mes",
+      "description": "Pràctiques universitàries (Grau en Enginyeria de Sistemes de Telecomunicació). Vaig desenvolupar i mantenir funcionalitats per a dues apps iOS natives (Swift, UIKit) de clients empresarials: vaig corregir errors visuals, millorar la usabilitat de diverses pantalles, implementar suport multiidioma amb Localizable.strings, contribuir a una funcionalitat promocional tipus \"rasca i guanya\" i desenvolupar un carrusel dinàmic a la pantalla principal per destacar esdeveniments d'una plataforma de voluntariat corporatiu.",
+      "summary": "Pràctiques universitàries com a iOS Developer. Manteniment i millora de dues apps iOS natives (Swift, UIKit) per a clients empresarials.",
+      "startDate": "2019"
+    }
+  ],
+  "skills": {
+    "mobile": ["Android", "Kotlin", "Kotlin Multiplatform", "Jetpack Compose", "Compose Multiplatform", "Kotlin Coroutines", "Clean Architecture", "SOLID", "Injecció de Dependències", "Koin", "Dagger", "Hilt", "Room", "Realm", "Ktor", "RxJava", "JUnit", "Mock", "Mockito", "Swift", "UIKit", "Flutter", "Dart", "Java"],
+    "backend": ["Java", "Spring Boot", "Hibernate", "APIs REST", "PHP"],
+    "frontend": ["HTML", "CSS", "JavaScript", "jQuery"],
+    "databases": ["SQL", "MySQL", "MariaDB", "MongoDB"],
+    "gamedev": ["Unity", "2D Development", "C++", "C#"],
+    "tools": ["IntelliJ IDEA", "Visual Studio", "Eclipse", "Xcode", "Android Studio", "VS Code", "Git", "GitHub", "CI/CD", "TDD", "JUnit", "Integration Testing", "Redmine", "Jira"],
+    "other": ["Office", "Outlook", "Teams"],
+    "soft": ["Treball en equip", "Adaptabilitat", "Resolució de problemes", "Iniciativa", "Comunicació", "Organització", "Responsabilitat"]
+  },
+  "languages": [
+    {
+      "language": "Català",
+      "level": "C1 - Domini Eficaç"
+    },
+    {
+      "language": "Castellà",
+      "level": "C1 - Domini Eficaç"
+    },
+    {
+      "language": "Anglès",
+      "level": "B1 - Llindar"
+    }
+  ]
+}

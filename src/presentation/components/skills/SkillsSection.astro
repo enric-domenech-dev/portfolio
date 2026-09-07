@@ -1,34 +1,67 @@
 ---
 import type { SkillCategory } from '@/core/skills/domain/models/Skill';
-import { SKILLS_SECTION } from '@/core/skills/constants';
+import { getSkillsSection, getSkillCategoryMeta, SKILL_GROUPS } from '@/core/skills/constants';
 import { STAGGER_STEP_MS } from '@/core/shared/constants/animations';
 import { staggerDelay } from '@/core/shared/utils/formatters';
+import { resolveLocale } from '@/core/shared/i18n/locale';
+import type { IconName } from '@/core/shared/constants/icons';
 import Badge from '../shared/Badge.astro';
 import Card from '../shared/Card.astro';
+import Icon from '../shared/Icon.astro';
 
 interface Props {
   categories: SkillCategory[];
 }
 
 const { categories } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const skillsSection = getSkillsSection(locale);
+const categoryMeta = getSkillCategoryMeta(locale);
+const metaByKey = Object.fromEntries(categoryMeta.map((meta) => [meta.key, meta]));
+
+const GROUP_ICON: Record<(typeof SKILL_GROUPS)[number], IconName> = {
+  hard: 'code',
+  soft: 'heart',
+};
+
+const groups = SKILL_GROUPS.map((group) => ({
+  group,
+  label: skillsSection.tabs[group],
+  icon: GROUP_ICON[group],
+  categories: categories.filter((category) => metaByKey[category.key].group === group),
+})).filter((group) => group.categories.length > 0);
 ---
 
 <section class="py-14 px-4">
   <div class="max-w-5xl mx-auto">
-    <h2 class="section-title">{SKILLS_SECTION.title}</h2>
+    <h2 class="section-title">{skillsSection.title}</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {categories.map((category, categoryIndex) => (
-        <Card variant="glass" class="p-6 animate-fade-up" style={staggerDelay(categoryIndex, STAGGER_STEP_MS.grid)}>
-          <h3 class="text-lg font-bold mb-4 text-slate-900 dark:text-slate-100">{category.title}</h3>
-          <div class="flex flex-wrap gap-2.5">
-            {category.items.map((skill, skillIndex) => (
-              <Badge variant="chip" class="animate-fade-in" style={staggerDelay(skillIndex, STAGGER_STEP_MS.chips)}>
-                {skill}
-              </Badge>
+    <div class="space-y-12">
+      {groups.map((group) => (
+        <div>
+          <h3 class="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary-500 mb-5">
+            <Icon name={group.icon} size={16} />
+            {group.label}
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {group.categories.map((category, categoryIndex) => (
+              <Card variant="glass" hover class="relative overflow-hidden p-6 animate-fade-up" style={staggerDelay(categoryIndex, STAGGER_STEP_MS.grid)}>
+                <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 to-secondary-400"></div>
+                <h4 class="flex items-center gap-2.5 text-lg font-bold mb-4 text-slate-900 dark:text-slate-100">
+                  <Icon name={category.icon} class="text-primary-500" />
+                  {metaByKey[category.key].title}
+                </h4>
+                <div class="flex flex-wrap gap-2.5">
+                  {category.items.map((skill, skillIndex) => (
+                    <Badge variant="chip" class="animate-fade-in" style={staggerDelay(skillIndex, STAGGER_STEP_MS.chips)}>
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </Card>
             ))}
           </div>
-        </Card>
+        </div>
       ))}
     </div>
   </div>

@@ -1,24 +1,51 @@
 ---
 import '../../styles/global.css';
-import { SITE_DEFAULTS } from '@/core/shared/constants/ui';
+import TopBar from '../components/topbar/TopBar.astro';
+import Drawer from '../components/drawer/Drawer.astro';
+import { getSiteDefaults } from '@/core/shared/constants/ui';
+import { resolveLocale } from '@/core/shared/i18n/locale';
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = SITE_DEFAULTS.description } = Astro.props;
+const locale = resolveLocale(Astro.currentLocale);
+const siteDefaults = getSiteDefaults(locale);
+const { title, description = siteDefaults.description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={SITE_DEFAULTS.lang}>
+<html lang={siteDefaults.lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        var isDark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', isDark);
+      })();
+    </script>
   </head>
   <body>
-    <slot />
+    <TopBar />
+    <Drawer />
+    <div id="pageContent" class="pt-16"><slot /></div>
+    <script>
+      // Entrance animations use `animation-fill-mode: both`, which keeps pinning
+      // `transform`/`opacity` after they finish and blocks `:hover` effects on the
+      // same properties. Drop the animation classes once they've played so hover
+      // states (lift, glow, scale...) work normally afterwards.
+      document.addEventListener('animationend', (e) => {
+        const target = e.target;
+        if (!(target instanceof HTMLElement)) return;
+        if (target.classList.contains('animate-fade-up') || target.classList.contains('animate-fade-in')) {
+          target.classList.remove('animate-fade-up', 'animate-fade-in');
+        }
+      });
+    </script>
   </body>
 </html>

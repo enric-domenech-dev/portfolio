@@ -8,6 +8,7 @@ export class EducationDtoMapper {
       institution: dto.institution,
       year: dto.year,
       status: dto.status,
+      level: dto.level,
     };
   }
 

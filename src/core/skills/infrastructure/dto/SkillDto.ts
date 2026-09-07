@@ -6,4 +6,5 @@ export interface SkillsDto {
   gamedev: string[];
   tools: string[];
   other: string[];
+  soft: string[];
 }

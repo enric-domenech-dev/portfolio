@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Imagin Bank",
+    "company": "Sopra Steria",
+    "description": "Maintenance and improvement of the Imagin Bank iOS app: adjusted several screens to improve usability and fix visual bugs, updated copy to ensure UI consistency, implemented multi-language support using Localizable.strings files, and contributed to a promotional \"scratch and win\" feature for in-app campaigns.",
+    "stack": ["Swift", "UIKit", "Xcode", "Localizable.strings"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Voluntarios de la Caixa",
+    "company": "Sopra Steria",
+    "description": "Contributed to the maintenance and evolution of the La Caixa Volunteers iOS app: adjusted screens and fixed copy to keep visual and textual consistency, improved multi-language localization through Localizable.strings files, and built a dynamic carousel on the home screen to showcase featured events and improve visibility of available activities.",
+    "stack": ["Swift", "UIKit", "Xcode", "Localizable.strings"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Filmaps",
+    "company": "Strategying",
+    "description": "Built an Android app from scratch that lets users discover and explore real film and TV filming locations: integrated Google Maps with custom markers to display points of interest, used Location Services to show nearby places, consumed REST APIs to enrich each location's data, designed modern, responsive screens with Jetpack Compose, and added multi-language support via localized strings.xml files.",
+    "stack": ["Kotlin Multiplatform", "Jetpack Compose", "Google Maps SDK", "Location Services", "Room", "Ktor"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Smart Appliance Companion App (KMP)",
+    "company": "app2U",
+    "description": "Building a new app (unreleased) for the next generation of smart home appliances for a home-appliance client, sharing business logic between Android and iOS with Kotlin Multiplatform.",
+    "stack": ["Kotlin Multiplatform", "Jetpack Compose", "Ktor"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Retail Stock Management System",
+    "company": "app2U",
+    "description": "Maintaining and evolving the warehouse & in-store stock management system for a retail client (pure Java with RxJava), shipping new features across both store and warehouse workflows. Introduced unit and integration testing in Kotlin to the project for the first time.",
+    "stack": ["Java", "RxJava", "Android", "Kotlin (tests)"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "AI-Assisted Development Workflow (Claude Code)",
+    "company": "app2U",
+    "description": "Helped introduce Claude Code into the team's development workflow: automated AI-based PR reviews, AI-generated JUnit/integration and E2E tests with simulators, assisted commit/PR creation, and MCP integrations (Redmine, Jira, Gmail, Calendar, Figma) to streamline the full development cycle.",
+    "stack": ["Claude Code", "JUnit", "CI/CD", "Git", "MCP"],
+    "repoUrl": "",
+    "demoUrl": ""
+  }
+]

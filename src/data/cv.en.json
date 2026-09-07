@@ -1,0 +1,83 @@
+{
+  "personal": {
+    "name": "Enric Domènech Aisa",
+    "title": "Software Engineer",
+    "location": "Barcelona, Spain",
+    "email": "enric.160493@gmail.com",
+    "phone": "+34 650 53 35 51",
+    "birthDate": "16/04/1993",
+    "dni": "47320898P",
+    "bio": "A responsible, dynamic and creative person, with strong adaptability and teamwork skills, able to perform under high-pressure conditions, with the initiative to solve problems efficiently and achieve the goals set by the company.",
+    "tagline": "Android and iOS from a single codebase, with Kotlin Multiplatform.\nCurrently at app2U.",
+    "links": {
+      "portfolio": "https://enric-domenech.dev",
+      "linkedin": "https://www.linkedin.com/in/enric-domènech-aisa-1384941aa/",
+      "github": "https://github.com/enric-domenech-dev"
+    }
+  },
+  "education": [
+    {
+      "degree": "Higher Diploma in Multiplatform Application Development",
+      "institution": "STUCOM Centre d'Estudis",
+      "year": "23' - 25'",
+      "level": "superior"
+    },
+    {
+      "degree": "Bachelor's Degree in Telecommunications Systems Engineering",
+      "institution": "Universitat Politècnica de Catalunya",
+      "status": "on hold",
+      "year": "15' - 3 of 4 years completed",
+      "level": "universitari"
+    }
+  ],
+  "experience": [
+    {
+      "company": "APP2U",
+      "position": "Software Engineer",
+      "duration": "1 year 6 months",
+      "description": "Working across Android and iOS, contributing to the team's adoption of Kotlin Multiplatform. Building a new Kotlin Multiplatform app (unreleased) for smart home appliances, and maintaining a warehouse & in-store stock management system for a retail client. Helped introduce AI-assisted development (Claude Code) into the team's workflow: automated PR reviews, AI-generated JUnit, integration and E2E tests, and MCP integrations (Redmine, Jira, Gmail, Calendar, Figma). Also maintain the company's internal Android and iOS libraries and modernized the internal Android project template.",
+      "summary": "Software Engineer across Android and iOS, leading the team's adoption of Kotlin Multiplatform. Building new KMP apps and maintaining critical systems for retail clients, plus introducing AI (Claude Code) into the development workflow.",
+      "startDate": "2025"
+    },
+    {
+      "company": "STRATEGYING",
+      "position": "Android Developer (Internship)",
+      "duration": "7 months",
+      "description": "Higher-level diploma internship (Multiplatform Application Development). Built Filmaps from scratch, an Android app to discover real film and TV filming locations, using Kotlin Multiplatform and Jetpack Compose, with Google Maps, Location Services, Room and Ktor integration. Also led, solo and with no prior experience in the technology, the Kotlin Multiplatform migration of WeFish, a legacy Android app (Fragments, XML views, older architecture) — the project that sparked my interest in KMP and one of the most rewarding experiences of my career.",
+      "summary": "Higher-level diploma internship (DAM). Built Filmaps from scratch with Kotlin Multiplatform and Jetpack Compose, and migrated a legacy app to KMP — the project that sparked my interest in the technology.",
+      "startDate": "2024"
+    },
+    {
+      "company": "SOPRA STERIA",
+      "position": "iOS Developer Intern",
+      "duration": "1 year 1 month",
+      "description": "University internship (Telecommunications Systems Engineering degree). Built and maintained features for two native iOS apps (Swift, UIKit) for enterprise clients: fixed visual bugs, improved usability across several screens, implemented multi-language support with Localizable.strings, contributed to a promotional \"scratch & win\" feature, and built a dynamic home-screen carousel to surface events for a corporate volunteering platform.",
+      "summary": "University internship as an iOS Developer. Maintained and improved two native iOS apps (Swift, UIKit) for enterprise clients.",
+      "startDate": "2019"
+    }
+  ],
+  "skills": {
+    "mobile": ["Android", "Kotlin", "Kotlin Multiplatform", "Jetpack Compose", "Compose Multiplatform", "Kotlin Coroutines", "Clean Architecture", "SOLID", "Dependency Injection", "Koin", "Dagger", "Hilt", "Room", "Realm", "Ktor", "RxJava", "JUnit", "Mock", "Mockito", "Swift", "UIKit", "Flutter", "Dart", "Java"],
+    "backend": ["Java", "Spring Boot", "Hibernate", "REST APIs", "PHP"],
+    "frontend": ["HTML", "CSS", "JavaScript", "jQuery"],
+    "databases": ["SQL", "MySQL", "MariaDB", "MongoDB"],
+    "gamedev": ["Unity", "2D Development", "C++", "C#"],
+    "tools": ["IntelliJ IDEA", "Visual Studio", "Eclipse", "Xcode", "Android Studio", "VS Code", "Git", "GitHub", "CI/CD", "TDD", "JUnit", "Integration Testing", "Redmine", "Jira"],
+    "other": ["Office", "Outlook", "Teams"],
+    "soft": ["Teamwork", "Adaptability", "Problem Solving", "Initiative", "Communication", "Organization", "Responsibility"]
+  },
+  "languages": [
+    {
+      "language": "Catalan",
+      "level": "C1 - Effective Operational Proficiency"
+    },
+    {
+      "language": "Spanish",
+      "level": "C1 - Effective Operational Proficiency"
+    },
+    {
+      "language": "English",
+      "level": "B1 - Threshold"
+    }
+  ]
+}

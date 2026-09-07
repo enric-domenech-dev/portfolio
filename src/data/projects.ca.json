@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Imagin Bank",
+    "company": "Sopra Steria",
+    "description": "Manteniment i millora de l'app iOS d'Imagin Bank: vaig ajustar pantalles per millorar la usabilitat, vaig corregir errors visuals i vaig actualitzar literals per mantenir la coherència de la interfície. Vaig implementar suport multiidioma amb Localizable.strings i vaig participar en el desenvolupament d'una funcionalitat promocional tipus \"rasca i guanya\" per a campanyes de l'app.",
+    "stack": ["Swift", "UIKit", "Xcode", "Localizable.strings"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Voluntarios de la Caixa",
+    "company": "Sopra Steria",
+    "description": "Vaig col·laborar en el manteniment i evolució de l'app iOS del programa de Voluntaris de la Caixa: vaig fer ajustos a pantalles i correccions de literals per mantenir la coherència visual i textual, vaig implementar millores en la localització multiidioma mitjançant fitxers Localizable.strings i vaig desenvolupar un carrusel dinàmic a la pantalla principal per mostrar esdeveniments destacats, millorant la visibilitat de les activitats disponibles.",
+    "stack": ["Swift", "UIKit", "Xcode", "Localizable.strings"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Filmaps",
+    "company": "Strategying",
+    "description": "Vaig desenvolupar des de zero una aplicació Android que permet als usuaris descobrir i explorar localitzacions reals de pel·lícules i sèries: vaig integrar Google Maps amb marcadors personalitzats, vaig utilitzar Location Services per mostrar llocs propers, vaig consumir APIs REST per obtenir dades enriquides de cada localització, vaig dissenyar pantalles modernes amb Jetpack Compose i vaig afegir suport multiidioma mitjançant fitxers strings.xml localitzats.",
+    "stack": ["Kotlin Multiplatform", "Jetpack Compose", "Google Maps SDK", "Location Services", "Room", "Ktor"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "App de Control per a Electrodomèstics Intel·ligents (KMP)",
+    "company": "app2U",
+    "description": "Desenvolupament d'una nova app (encara sense publicar) per a la propera generació d'electrodomèstics intel·ligents d'un client del sector llar, compartint lògica de negoci entre Android i iOS amb Kotlin Multiplatform.",
+    "stack": ["Kotlin Multiplatform", "Jetpack Compose", "Ktor"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Sistema de Gestió d'Estoc Retail",
+    "company": "app2U",
+    "description": "Manteniment i evolució del sistema de control d'estoc de magatzem i botiga per a un client de retail (Java pur amb RxJava), implementant noves funcionalitats en els fluxos de treball tant de botiga com de magatzem. Vaig introduir per primera vegada al projecte tests unitaris i d'integració en Kotlin.",
+    "stack": ["Java", "RxJava", "Android", "Kotlin (tests)"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Integració de Desenvolupament Assistit per IA (Claude Code)",
+    "company": "app2U",
+    "description": "Vaig participar en la introducció de Claude Code al flux de treball de l'equip: revisions de PRs automatitzades amb IA, generació de tests JUnit, d'integració i E2E amb simuladors, creació de commits i PRs assistida, i connexió d'MCPs (Redmine, Jira, Gmail, Calendar, Figma) per agilitzar tot el cicle de desenvolupament.",
+    "stack": ["Claude Code", "JUnit", "CI/CD", "Git", "MCP"],
+    "repoUrl": "",
+    "demoUrl": ""
+  }
+]

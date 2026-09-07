@@ -1,3 +1,5 @@
+import type { IconName } from '@/core/shared/constants/icons';
+
 export type SkillCategoryKey =
   | 'mobile'
   | 'backend'
@@ -5,12 +7,15 @@ export type SkillCategoryKey =
   | 'databases'
   | 'gamedev'
   | 'tools'
-  | 'other';
+  | 'other'
+  | 'soft';
+
+export type SkillGroup = 'hard' | 'soft';
 
 export interface SkillCategory {
   key: SkillCategoryKey;
-  title: string;
-  cvTitle: string;
+  group: SkillGroup;
   showInCv: boolean;
+  icon: IconName;
   items: string[];
 }

@@ -1,21 +1,37 @@
-import type { SkillCategoryKey } from './domain/models/Skill';
+import type { IconName } from '@/core/shared/constants/icons';
+import type { Locale } from '@/core/shared/i18n/locale';
+import { getDictionary } from '@/core/shared/i18n/dictionary';
+import type { SkillCategoryKey, SkillGroup } from './domain/models/Skill';
 
-export const SKILLS_SECTION = {
-  id: 'skills',
-  title: 'Competencias',
-} as const;
+export function getSkillsSection(locale: Locale) {
+  return getDictionary(locale).skillsSection;
+}
 
-export const SKILL_CATEGORY_META: Array<{
+export const BASE_CATEGORIES: Array<{ key: SkillCategoryKey; group: SkillGroup; showInCv: boolean; icon: IconName }> = [
+  { key: 'mobile', group: 'hard', showInCv: true, icon: 'smartphone' },
+  { key: 'tools', group: 'hard', showInCv: false, icon: 'wrench' },
+  { key: 'backend', group: 'hard', showInCv: true, icon: 'server' },
+  { key: 'frontend', group: 'hard', showInCv: true, icon: 'monitor' },
+  { key: 'databases', group: 'hard', showInCv: true, icon: 'database' },
+  { key: 'gamedev', group: 'hard', showInCv: false, icon: 'gamepad' },
+  { key: 'other', group: 'hard', showInCv: false, icon: 'sparkles' },
+  { key: 'soft', group: 'soft', showInCv: false, icon: 'heart' },
+];
+
+export const SKILL_GROUPS: SkillGroup[] = ['hard', 'soft'];
+
+export function getSkillCategoryMeta(locale: Locale): Array<{
   key: SkillCategoryKey;
+  group: SkillGroup;
   title: string;
   cvTitle: string;
   showInCv: boolean;
-}> = [
-  { key: 'mobile', title: '📱 Mobile', cvTitle: 'Desarrollo Mobile', showInCv: true },
-  { key: 'backend', title: '🧠 Backend', cvTitle: 'Backend', showInCv: true },
-  { key: 'frontend', title: '🖥️ Frontend', cvTitle: 'Frontend', showInCv: true },
-  { key: 'databases', title: '🗄️ Databases', cvTitle: 'Bases de Datos', showInCv: true },
-  { key: 'gamedev', title: '🎮 Game Development', cvTitle: 'Game Development', showInCv: false },
-  { key: 'tools', title: '🛠️ Dev Tools', cvTitle: 'Dev Tools', showInCv: false },
-  { key: 'other', title: '✨ Otras', cvTitle: 'Otras', showInCv: false },
-];
+  icon: IconName;
+}> {
+  const { skillCategories } = getDictionary(locale);
+  return BASE_CATEGORIES.map((base) => ({
+    ...base,
+    title: skillCategories[base.key].title,
+    cvTitle: skillCategories[base.key].cvTitle,
+  }));
+}
