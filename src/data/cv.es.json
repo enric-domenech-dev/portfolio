@@ -8,6 +8,7 @@
     "birthDate": "16/04/1993",
     "dni": "47320898P",
     "bio": "Persona responsable, dinámica y creativa, con facilidad de adaptación y capacidad de trabajar en equipo, en condiciones de alta presión, con iniciativa para resolver problemas eficientemente y conseguir las metas y objetivos marcados por la empresa.",
+    "tagline": "Android e iOS desde una sola base de código, con Kotlin Multiplatform.\nActualmente en app2U.",
     "links": {
       "portfolio": "https://enric-domenech.dev",
       "linkedin": "https://www.linkedin.com/in/enric-domènech-aisa-1384941aa/",
@@ -22,12 +23,6 @@
       "level": "superior"
     },
     {
-      "degree": "Grado Superior en Animación de Actividades Físico-Deportivas",
-      "institution": "Institut Vall d'Hebron",
-      "year": "16'-18'",
-      "level": "superior"
-    },
-    {
       "degree": "Grado en Ingeniería de Sistemas de Telecomunicación",
       "institution": "Universitat Politècnica de Catalunya",
       "status": "en pausa",
@@ -37,57 +32,39 @@
   ],
   "experience": [
     {
+      "company": "APP2U",
+      "position": "Ingeniero de Software",
+      "duration": "1 año 6 meses",
+      "description": "Trabajo en Android e iOS, contribuyendo a la incorporación de Kotlin Multiplatform en el equipo. Desarrollo una nueva app en Kotlin Multiplatform (aún sin publicar) para electrodomésticos inteligentes y mantengo un sistema de gestión de stock de almacén y tienda para un cliente retail. Participé en la introducción de desarrollo asistido por IA (Claude Code) en el flujo del equipo: revisiones de PR automatizadas, generación de tests JUnit, de integración y E2E con IA, e integración de MCPs (Redmine, Jira, Gmail, Calendar, Figma). También mantengo las librerías internas de Android e iOS de la empresa y modernicé la plantilla interna de proyectos Android.",
+      "summary": "Ingeniero de Software en Android e iOS, liderando la adopción de Kotlin Multiplatform en el equipo. Desarrollo de nuevas apps KMP y mantenimiento de sistemas críticos para clientes retail, además de introducir IA (Claude Code) en el flujo de desarrollo.",
+      "startDate": "2025"
+    },
+    {
+      "company": "STRATEGYING",
+      "position": "Android Developer (Prácticas)",
+      "duration": "7 meses",
+      "description": "Prácticas del Grado Superior en Desarrollo de Aplicaciones Multiplataforma. Desarrollé desde cero Filmaps, una app Android para descubrir localizaciones reales de rodajes de películas y series, usando Kotlin Multiplatform y Jetpack Compose, con integración de Google Maps, Location Services, Room y Ktor. También lideré en solitario, sin experiencia previa en la tecnología, la migración a Kotlin Multiplatform de WeFish, una app Android heredada (Fragments, vistas XML, arquitectura antigua) — el proyecto que despertó mi interés por KMP y una de las experiencias más gratificantes de mi carrera.",
+      "summary": "Prácticas del Grado Superior en DAM. Desarrollo desde cero de Filmaps con Kotlin Multiplatform y Jetpack Compose, y migración a KMP de una app heredada — el proyecto que despertó mi interés por esta tecnología.",
+      "startDate": "2024"
+    },
+    {
       "company": "SOPRA STERIA",
-      "position": "iOS Developer",
-      "duration": "1 año",
-      "description": "Programación de apps como Junior Developer",
-      "startDate": "2023"
-    },
-    {
-      "company": "FC BARCELONA",
-      "position": "IT Technical Support",
-      "duration": "6 meses",
-      "description": "Servicio técnico de las instalaciones del club deportivo",
-      "startDate": "2022"
-    },
-    {
-      "company": "TIBIDABO",
-      "position": "Operario",
-      "duration": "6 meses",
-      "description": "Preparación de alimentos y limpieza de las instalaciones",
-      "startDate": "2021"
-    },
-    {
-      "company": "TOTAL FRESH",
-      "position": "Transitario",
-      "duration": "2 años",
-      "description": "Coordinación de transporte por aire, mar y tierra",
+      "position": "iOS Developer (Prácticas)",
+      "duration": "1 año 1 mes",
+      "description": "Prácticas universitarias (Grado en Ingeniería de Sistemas de Telecomunicación). Desarrollé y mantuve funcionalidades para dos apps iOS nativas (Swift, UIKit) de clientes empresariales: corregí errores visuales, mejoré la usabilidad de varias pantallas, implementé soporte multilenguaje con Localizable.strings, contribuí a una funcionalidad promocional tipo \"rasca y gana\" y desarrollé un carrusel dinámico en la pantalla principal para destacar eventos de una plataforma de voluntariado corporativo.",
+      "summary": "Prácticas universitarias como iOS Developer. Mantenimiento y mejora de dos apps iOS nativas (Swift, UIKit) para clientes empresariales.",
       "startDate": "2019"
-    },
-    {
-      "company": "SPORTEVO",
-      "position": "Entrenador Personal",
-      "duration": "3 meses",
-      "description": "Supervisión de todos los clientes y las instalaciones",
-      "startDate": "2018"
-    },
-    {
-      "company": "ELIEM / EXSER",
-      "position": "Operario",
-      "duration": "1 año",
-      "description": "Realización de servicios relacionados con la empresa",
-      "startDate": "2017"
     }
   ],
   "skills": {
-    "mobile": ["Android", "Kotlin", "Kotlin Multiplatform", "Jetpack Compose", "Flutter", "Dart", "Java"],
-    "backend": ["Spring Boot", "MySQL", "Hibernate", "Room", "C++", "C#", "JavaScript", "PHP"],
-    "frontend": ["HTML", "CSS", "JavaScript", "jQuery", "Swift"],
-    "databases": ["DDL", "DML", "DCL", "TCL", "SQL"],
-    "gamedev": ["Unity", "2D Development"],
-    "tools": ["Visual Studio", "Eclipse", "Xcode", "Android Studio", "VS Code", "Git", "GitHub", "CI/CD", "TDD"],
+    "mobile": ["Android", "Kotlin", "Kotlin Multiplatform", "Jetpack Compose", "Compose Multiplatform", "Kotlin Coroutines", "Clean Architecture", "SOLID", "Inyección de Dependencias", "Koin", "Dagger", "Hilt", "Room", "Realm", "Ktor", "RxJava", "JUnit", "Mock", "Mockito", "Swift", "UIKit", "Flutter", "Dart", "Java"],
+    "backend": ["Java", "Spring Boot", "Hibernate", "APIs REST", "PHP"],
+    "frontend": ["HTML", "CSS", "JavaScript", "jQuery"],
+    "databases": ["SQL", "MySQL", "MariaDB", "MongoDB"],
+    "gamedev": ["Unity", "2D Development", "C++", "C#"],
+    "tools": ["IntelliJ IDEA", "Visual Studio", "Eclipse", "Xcode", "Android Studio", "VS Code", "Git", "GitHub", "CI/CD", "TDD", "JUnit", "Integration Testing", "Redmine", "Jira"],
     "other": ["Office", "Outlook", "Teams"],
-    "soft": ["Trabajo en equipo", "Adaptabilidad", "Resolución de problemas", "Trabajo bajo presión", "Iniciativa", "Responsabilidad", "Comunicación", "Orientación a objetivos"]
+    "soft": ["Trabajo en equipo", "Adaptabilidad", "Resolución de problemas", "Iniciativa", "Comunicación", "Organización", "Responsabilidad"]
   },
   "languages": [
     {

@@ -34,7 +34,7 @@ export default {
       boxShadow: {
         glow: '0 8px 30px rgba(88, 101, 242, 0.3)',
         soft: '0 12px 30px rgba(15, 23, 42, 0.08)',
-        neo: '10px 10px 20px rgba(148, 163, 184, 0.25), -10px -10px 20px rgba(255, 255, 255, 0.95)',
+        lift: '0 16px 36px rgba(15, 23, 42, 0.16)',
       },
       backgroundImage: {
         'hero-gradient': 'linear-gradient(125deg, #4652D9 0%, #18B7E5 45%, #67E8F9 100%)',

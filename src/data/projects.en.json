@@ -24,26 +24,26 @@
     "demoUrl": ""
   },
   {
-    "title": "TODO: Project name 4",
-    "company": "",
-    "description": "TODO: brief description — what problem it solves, your role and the outcome.",
-    "stack": [],
+    "title": "Smart Appliance Companion App (KMP)",
+    "company": "app2U",
+    "description": "Building a new app (unreleased) for the next generation of smart home appliances for a home-appliance client, sharing business logic between Android and iOS with Kotlin Multiplatform.",
+    "stack": ["Kotlin Multiplatform", "Jetpack Compose", "Ktor"],
     "repoUrl": "",
     "demoUrl": ""
   },
   {
-    "title": "TODO: Project name 5",
-    "company": "",
-    "description": "TODO: brief description — what problem it solves, your role and the outcome.",
-    "stack": [],
+    "title": "Retail Stock Management System",
+    "company": "app2U",
+    "description": "Maintaining and evolving the warehouse & in-store stock management system for a retail client (pure Java with RxJava), shipping new features across both store and warehouse workflows. Introduced unit and integration testing in Kotlin to the project for the first time.",
+    "stack": ["Java", "RxJava", "Android", "Kotlin (tests)"],
     "repoUrl": "",
     "demoUrl": ""
   },
   {
-    "title": "TODO: Project name 6",
-    "company": "",
-    "description": "TODO: brief description — what problem it solves, your role and the outcome.",
-    "stack": [],
+    "title": "AI-Assisted Development Workflow (Claude Code)",
+    "company": "app2U",
+    "description": "Helped introduce Claude Code into the team's development workflow: automated AI-based PR reviews, AI-generated JUnit/integration and E2E tests with simulators, assisted commit/PR creation, and MCP integrations (Redmine, Jira, Gmail, Calendar, Figma) to streamline the full development cycle.",
+    "stack": ["Claude Code", "JUnit", "CI/CD", "Git", "MCP"],
     "repoUrl": "",
     "demoUrl": ""
   }

@@ -2,8 +2,9 @@
 import type { CVData } from '@/core/cv/domain/models/CVData';
 import { getCvLabels, PDF_EXPORT_OPTIONS } from '@/core/cv/constants';
 import { getSkillCategoryMeta } from '@/core/skills/constants';
+import { AVATAR_SRC, getHeroLabels } from '../hero/constants';
 import { joinList } from '@/core/shared/utils/formatters';
-import { resolveLocale } from '@/core/shared/i18n/locale';
+import { localizedPath, resolveLocale } from '@/core/shared/i18n/locale';
 import Badge from '../shared/Badge.astro';
 import Card from '../shared/Card.astro';
 import Icon from '../shared/Icon.astro';
@@ -15,6 +16,7 @@ interface Props {
 const { cvData } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const CV_LABELS = getCvLabels(locale);
+const heroLabels = getHeroLabels(locale);
 const cvTitleByKey = Object.fromEntries(getSkillCategoryMeta(locale).map((meta) => [meta.key, meta.cvTitle]));
 const cvSkillCategories = cvData.skills.filter((category) => category.showInCv);
 ---
@@ -23,30 +25,39 @@ const cvSkillCategories = cvData.skills.filter((category) => category.showInCv);
   <div class="glass-card flex flex-wrap gap-3 mb-6 print:hidden sticky top-16 z-10 p-4">
     <button
       id="downloadBtn"
-      class="inline-flex items-center gap-2 bg-primary-500 text-white px-6 py-2.5 rounded-full hover:bg-primary-600 hover:-translate-y-0.5 transition duration-300 shadow-glow"
+      class="inline-flex items-center gap-2 bg-primary-500 text-white px-6 py-2.5 rounded-full shadow-soft hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-lift transition duration-300"
     >
       <Icon name="download" size={18} /> {CV_LABELS.downloadPdf}
     </button>
     <button
       id="printBtn"
-      class="inline-flex items-center gap-2 bg-secondary-500 text-white px-6 py-2.5 rounded-full hover:bg-secondary-600 hover:-translate-y-0.5 transition duration-300 shadow-soft"
+      class="inline-flex items-center gap-2 bg-secondary-500 text-white px-6 py-2.5 rounded-full shadow-soft hover:bg-secondary-600 hover:-translate-y-0.5 hover:shadow-lift transition duration-300"
     >
       <Icon name="printer" size={18} /> {CV_LABELS.print}
     </button>
   </div>
 
   <div id="cvContent" class="neo-panel p-6 md:p-10 print:bg-white print:shadow-none print:p-0">
-    <div class="mb-8 pb-8 border-b border-slate-300/60 dark:border-slate-600/40">
-      <p class="uppercase tracking-[0.24em] text-xs text-primary-500 mb-2">{CV_LABELS.eyebrow}</p>
-      <h1 class="text-4xl font-extrabold text-primary-600 dark:text-primary-300 mb-2">{cvData.personal.name}</h1>
-      <p class="text-xl text-slate-600 dark:text-slate-300 mb-4">{cvData.personal.title}</p>
-      <p class="text-slate-700 dark:text-slate-200 mb-4 leading-relaxed">{cvData.personal.bio}</p>
+    <div class="mb-8 pb-8 border-b border-slate-300/60 dark:border-slate-600/40 flex flex-col sm:flex-row gap-6 sm:items-start">
+      <img
+        src={AVATAR_SRC}
+        alt={cvData.personal.name}
+        width="112"
+        height="112"
+        class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover ring-4 ring-primary-200/60 dark:ring-primary-500/30 shrink-0"
+      />
+      <div class="flex-1 min-w-0">
+        <p class="uppercase tracking-[0.24em] text-xs text-primary-500 mb-2">{CV_LABELS.eyebrow}</p>
+        <h1 class="text-4xl font-extrabold text-primary-600 dark:text-primary-300 mb-2">{cvData.personal.name}</h1>
+        <p class="text-xl text-slate-600 dark:text-slate-300 mb-4">{cvData.personal.title}</p>
+        <p class="text-slate-700 dark:text-slate-200 mb-4 leading-relaxed">{cvData.personal.bio}</p>
 
-      <div class="grid sm:grid-cols-2 gap-3 text-sm">
+        <div class="grid sm:grid-cols-2 gap-3 text-sm">
         <Card variant="glass" class="!rounded-xl !shadow-none p-3 flex items-center gap-2"><Icon name="mail" size={16} /> {cvData.personal.email}</Card>
         <Card variant="glass" class="!rounded-xl !shadow-none p-3 flex items-center gap-2"><Icon name="phone" size={16} /> {cvData.personal.phone}</Card>
         <Card variant="glass" class="!rounded-xl !shadow-none p-3 flex items-center gap-2"><Icon name="map-pin" size={16} /> {cvData.personal.location}</Card>
         <Card variant="glass" class="!rounded-xl !shadow-none p-3 flex items-center gap-2"><Icon name="cake" size={16} /> {cvData.personal.birthDate}</Card>
+        </div>
       </div>
     </div>
 
@@ -64,7 +75,13 @@ const cvSkillCategories = cvData.skills.filter((category) => category.showInCv);
     </section>
 
     <section class="mb-8">
-      <h2 class="text-2xl font-bold text-primary-600 mb-4">{CV_LABELS.experienceTitle}</h2>
+      <h2 class="text-2xl font-bold text-primary-600 mb-1">{CV_LABELS.experienceTitle}</h2>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+        {CV_LABELS.experienceNote}{' '}
+        <a href={localizedPath('/experiencia', locale)} class="text-primary-600 dark:text-primary-300 font-medium underline underline-offset-2">
+          {heroLabels.exploreExperience}
+        </a>
+      </p>
       <div class="space-y-4">
         {cvData.experience.map((exp) => (
           <Card variant="glass" class="!rounded-2xl p-4">
@@ -75,7 +92,7 @@ const cvSkillCategories = cvData.skills.filter((category) => category.showInCv);
               </div>
               <Badge variant="pill">{exp.duration}</Badge>
             </div>
-            <p class="text-sm text-slate-700 dark:text-slate-200 mt-2">{exp.description}</p>
+            <p class="text-sm text-slate-700 dark:text-slate-200 mt-2">{exp.summary}</p>
           </Card>
         ))}
       </div>
@@ -111,8 +128,20 @@ const cvSkillCategories = cvData.skills.filter((category) => category.showInCv);
 <script is:inline define:vars={{ pdfOptions: PDF_EXPORT_OPTIONS }}>
   document.getElementById('downloadBtn')?.addEventListener('click', function () {
     const element = document.getElementById('cvContent');
+    const options = {
+      ...pdfOptions,
+      html2canvas: {
+        scale: 2,
+        backgroundColor: '#ffffff',
+        // Renders a light-mode clone regardless of the site's current theme, since
+        // html2canvas can't handle backdrop-filter/translucent surfaces (they came out grey).
+        onclone: function (clonedDoc) {
+          clonedDoc.documentElement.classList.remove('dark');
+        },
+      },
+    };
     // @ts-ignore - html2pdf is loaded globally from the CDN script above
-    html2pdf().set(pdfOptions).from(element).save();
+    html2pdf().set(options).from(element).save();
   });
 
   document.getElementById('printBtn')?.addEventListener('click', function () {
@@ -120,13 +149,31 @@ const cvSkillCategories = cvData.skills.filter((category) => category.showInCv);
   });
 </script>
 
+<style is:global>
+  /* Card.astro renders these classes from a child component, so this must be global
+     (not Astro-scoped) to actually reach them. Keeps each entry (education, experience,
+     languages) from being split across a page break, in both html2pdf and native print. */
+  #cvContent .glass-card,
+  #cvContent .neo-panel {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+</style>
+
 <style>
   @media print {
     body {
-      background: white;
+      background: white !important;
+    }
+    #cvContent,
+    #cvContent * {
+      background: transparent !important;
+      color: #0f172a !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
     }
     #cvContent {
-      box-shadow: none;
+      background: white !important;
       margin: 0;
       border-radius: 0;
     }

@@ -2,16 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/hero/Header.astro';
 import QuickAccess from '../components/home/QuickAccess.astro';
+import EducationSection from '../components/education/EducationSection.astro';
 import { container } from '@/core/di/container';
 import { getSiteDefaults } from '@/core/shared/constants/ui';
 import { resolveLocale } from '@/core/shared/i18n/locale';
 
 const locale = resolveLocale(Astro.currentLocale);
 const cvData = container.getCVData.execute(locale);
+const education = container.getEducation.execute(locale);
 const siteDefaults = getSiteDefaults(locale);
 ---
 
 <Layout title={siteDefaults.title} description={siteDefaults.description}>
   <Header personal={cvData.personal} />
   <QuickAccess />
+  <EducationSection items={education} />
 </Layout>

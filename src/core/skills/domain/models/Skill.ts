@@ -10,7 +10,7 @@ export type SkillCategoryKey =
   | 'other'
   | 'soft';
 
-export type SkillGroup = 'dev' | 'hard' | 'soft';
+export type SkillGroup = 'hard' | 'soft';
 
 export interface SkillCategory {
   key: SkillCategoryKey;

@@ -5,8 +5,6 @@ export interface Dictionary {
   nav: {
     inicio: string;
     experiencia: string;
-    proyectos: string;
-    educacion: string;
     skills: string;
     contacto: string;
     cv: string;
@@ -22,21 +20,18 @@ export interface Dictionary {
     languageLabel: string;
   };
   hero: {
-    eyebrow: string;
     exploreExperience: string;
     viewFullCv: string;
     linkedin: string;
     github: string;
   };
   quickAccess: {
-    proyectos: { title: string; description: string };
     skills: { title: string; description: string };
-    cv: { title: string; description: string };
-    educacion: { title: string; description: string };
+    contacto: { title: string; description: string };
   };
   experience: { title: string; eyebrow: string };
-  education: { title: string; eyebrow: string; superior: string; universitari: string };
-  skillsSection: { title: string; tabs: { dev: string; hard: string; soft: string } };
+  education: { title: string; superior: string; universitari: string };
+  skillsSection: { title: string; tabs: { hard: string; soft: string } };
   skillCategories: {
     mobile: { title: string; cvTitle: string };
     backend: { title: string; cvTitle: string };
@@ -47,8 +42,14 @@ export interface Dictionary {
     other: { title: string; cvTitle: string };
     soft: { title: string; cvTitle: string };
   };
-  projects: { title: string; eyebrow: string; placeholderNote: string; repo: string; demo: string };
-  contact: { title: string; eyebrow: string; intro: string };
+  projects: { eyebrow: string; repo: string; demo: string };
+  contact: {
+    title: string;
+    eyebrow: string;
+    intro: string;
+    cta: string;
+    fields: { email: string; phone: string; location: string };
+  };
   cv: {
     pageTitle: string;
     eyebrow: string;
@@ -56,6 +57,7 @@ export interface Dictionary {
     print: string;
     educationTitle: string;
     experienceTitle: string;
+    experienceNote: string;
     skillsTitle: string;
     languagesTitle: string;
   };
@@ -70,8 +72,6 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
     nav: {
       inicio: 'Inicio',
       experiencia: 'Experiencia',
-      proyectos: 'Proyectos',
-      educacion: 'Educación',
       skills: 'Skills',
       contacto: 'Contacto',
       cv: 'CV',
@@ -87,26 +87,22 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       languageLabel: 'Idioma',
     },
     hero: {
-      eyebrow: 'Portfolio Profesional',
       exploreExperience: 'Explorar experiencia',
       viewFullCv: 'CV',
       linkedin: 'LinkedIn',
       github: 'GitHub',
     },
     quickAccess: {
-      proyectos: { title: 'Proyectos', description: 'Proyectos personales y trabajo destacado.' },
       skills: { title: 'Skills', description: 'Tecnologías y competencias técnicas.' },
-      cv: { title: 'CV completo', description: 'Documento descargable e imprimible.' },
-      educacion: { title: 'Educación', description: 'Formación académica y titulaciones.' },
+      contacto: { title: 'Contacto', description: '¿Hablamos? Estos son los canales más directos.' },
     },
     experience: { title: 'Experiencia Profesional', eyebrow: 'Carrera' },
     education: {
       title: 'Formación Académica',
-      eyebrow: 'Educación',
-      superior: 'Grados Superiores',
-      universitari: 'Formación Universitaria',
+      superior: 'Grado Superior',
+      universitari: 'Grado Universitario',
     },
-    skillsSection: { title: 'Competencias', tabs: { dev: 'Dev Skills', hard: 'Hard Skills', soft: 'Soft Skills' } },
+    skillsSection: { title: 'Competencias', tabs: { hard: 'Hard Skills', soft: 'Soft Skills' } },
     skillCategories: {
       mobile: { title: 'Mobile', cvTitle: 'Desarrollo Mobile' },
       backend: { title: 'Backend', cvTitle: 'Backend' },
@@ -114,13 +110,11 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       databases: { title: 'Databases', cvTitle: 'Bases de Datos' },
       gamedev: { title: 'Game Development', cvTitle: 'Game Development' },
       tools: { title: 'Dev Tools', cvTitle: 'Dev Tools' },
-      other: { title: 'Otras', cvTitle: 'Otras' },
+      other: { title: 'Ofimática', cvTitle: 'Ofimática' },
       soft: { title: 'Soft Skills', cvTitle: 'Soft Skills' },
     },
     projects: {
-      title: 'Proyectos',
-      eyebrow: 'Trabajo personal',
-      placeholderNote: 'Proyectos profesionales en los que he participado.',
+      eyebrow: 'Proyecto destacado',
       repo: 'Repositorio',
       demo: 'Demo',
     },
@@ -128,6 +122,8 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       title: 'Contacto',
       eyebrow: 'Hablemos',
       intro: '¿Tienes una propuesta o quieres saber más? Estos son los canales más directos para contactar.',
+      cta: 'Enviar email',
+      fields: { email: 'Email', phone: 'Teléfono', location: 'Ubicación' },
     },
     cv: {
       pageTitle: 'CV - Enric Domènech',
@@ -136,6 +132,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       print: 'Imprimir',
       educationTitle: 'Formación Académica',
       experienceTitle: 'Experiencia Profesional',
+      experienceNote: 'Descripción completa de cada rol y proyectos destacados en la página de Experiencia.',
       skillsTitle: 'Competencias',
       languagesTitle: 'Idiomas',
     },
@@ -148,8 +145,6 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
     nav: {
       inicio: 'Inici',
       experiencia: 'Experiència',
-      proyectos: 'Projectes',
-      educacion: 'Educació',
       skills: 'Skills',
       contacto: 'Contacte',
       cv: 'CV',
@@ -165,26 +160,22 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       languageLabel: 'Idioma',
     },
     hero: {
-      eyebrow: 'Portfolio Professional',
       exploreExperience: 'Explorar experiència',
       viewFullCv: 'CV',
       linkedin: 'LinkedIn',
       github: 'GitHub',
     },
     quickAccess: {
-      proyectos: { title: 'Projectes', description: 'Projectes personals i feina destacada.' },
       skills: { title: 'Skills', description: 'Tecnologies i competències tècniques.' },
-      cv: { title: 'CV complet', description: 'Document descarregable i imprimible.' },
-      educacion: { title: 'Educació', description: 'Formació acadèmica i titulacions.' },
+      contacto: { title: 'Contacte', description: 'Parlem? Aquests són els canals més directes.' },
     },
     experience: { title: 'Experiència Professional', eyebrow: 'Carrera' },
     education: {
       title: 'Formació Acadèmica',
-      eyebrow: 'Educació',
-      superior: 'Graus Superiors',
-      universitari: 'Formació Universitària',
+      superior: 'Grau Superior',
+      universitari: 'Grau Universitari',
     },
-    skillsSection: { title: 'Competències', tabs: { dev: 'Dev Skills', hard: 'Hard Skills', soft: 'Soft Skills' } },
+    skillsSection: { title: 'Competències', tabs: { hard: 'Hard Skills', soft: 'Soft Skills' } },
     skillCategories: {
       mobile: { title: 'Mobile', cvTitle: 'Desenvolupament Mobile' },
       backend: { title: 'Backend', cvTitle: 'Backend' },
@@ -192,13 +183,11 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       databases: { title: 'Databases', cvTitle: 'Bases de Dades' },
       gamedev: { title: 'Game Development', cvTitle: 'Game Development' },
       tools: { title: 'Dev Tools', cvTitle: 'Dev Tools' },
-      other: { title: 'Altres', cvTitle: 'Altres' },
+      other: { title: 'Ofimàtica', cvTitle: 'Ofimàtica' },
       soft: { title: 'Soft Skills', cvTitle: 'Soft Skills' },
     },
     projects: {
-      title: 'Projectes',
-      eyebrow: 'Feina personal',
-      placeholderNote: 'Projectes professionals en els quals he participat.',
+      eyebrow: 'Projecte destacat',
       repo: 'Repositori',
       demo: 'Demo',
     },
@@ -206,6 +195,8 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       title: 'Contacte',
       eyebrow: 'Parlem-ne',
       intro: 'Tens una proposta o vols saber-ne més? Aquests són els canals més directes per contactar.',
+      cta: 'Enviar email',
+      fields: { email: 'Email', phone: 'Telèfon', location: 'Ubicació' },
     },
     cv: {
       pageTitle: 'CV - Enric Domènech',
@@ -214,6 +205,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       print: 'Imprimir',
       educationTitle: 'Formació Acadèmica',
       experienceTitle: 'Experiència Professional',
+      experienceNote: 'Descripció completa de cada rol i projectes destacats a la pàgina d\'Experiència.',
       skillsTitle: 'Competències',
       languagesTitle: 'Idiomes',
     },
@@ -226,8 +218,6 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
     nav: {
       inicio: 'Home',
       experiencia: 'Experience',
-      proyectos: 'Projects',
-      educacion: 'Education',
       skills: 'Skills',
       contacto: 'Contact',
       cv: 'CV',
@@ -243,26 +233,22 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       languageLabel: 'Language',
     },
     hero: {
-      eyebrow: 'Professional Portfolio',
       exploreExperience: 'Explore experience',
       viewFullCv: 'CV',
       linkedin: 'LinkedIn',
       github: 'GitHub',
     },
     quickAccess: {
-      proyectos: { title: 'Projects', description: 'Personal projects and featured work.' },
       skills: { title: 'Skills', description: 'Technologies and technical skills.' },
-      cv: { title: 'Full CV', description: 'Downloadable, printable document.' },
-      educacion: { title: 'Education', description: 'Academic background and degrees.' },
+      contacto: { title: 'Contact', description: "Let's talk. These are the most direct channels." },
     },
     experience: { title: 'Professional Experience', eyebrow: 'Career' },
     education: {
       title: 'Academic Background',
-      eyebrow: 'Education',
-      superior: 'Higher-Level Diplomas',
-      universitari: 'University Studies',
+      superior: 'Higher-Level Diploma',
+      universitari: 'University Degree',
     },
-    skillsSection: { title: 'Skills', tabs: { dev: 'Dev Skills', hard: 'Hard Skills', soft: 'Soft Skills' } },
+    skillsSection: { title: 'Skills', tabs: { hard: 'Hard Skills', soft: 'Soft Skills' } },
     skillCategories: {
       mobile: { title: 'Mobile', cvTitle: 'Mobile Development' },
       backend: { title: 'Backend', cvTitle: 'Backend' },
@@ -270,13 +256,11 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       databases: { title: 'Databases', cvTitle: 'Databases' },
       gamedev: { title: 'Game Development', cvTitle: 'Game Development' },
       tools: { title: 'Dev Tools', cvTitle: 'Dev Tools' },
-      other: { title: 'Other', cvTitle: 'Other' },
+      other: { title: 'Office & Productivity', cvTitle: 'Office & Productivity' },
       soft: { title: 'Soft Skills', cvTitle: 'Soft Skills' },
     },
     projects: {
-      title: 'Projects',
-      eyebrow: 'Personal work',
-      placeholderNote: "Professional projects I've contributed to.",
+      eyebrow: 'Featured project',
       repo: 'Repository',
       demo: 'Demo',
     },
@@ -284,6 +268,8 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       title: 'Contact',
       eyebrow: "Let's talk",
       intro: 'Have a proposal or want to know more? These are the most direct ways to reach me.',
+      cta: 'Send email',
+      fields: { email: 'Email', phone: 'Phone', location: 'Location' },
     },
     cv: {
       pageTitle: 'CV - Enric Domènech',
@@ -292,6 +278,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       print: 'Print',
       educationTitle: 'Academic Background',
       experienceTitle: 'Professional Experience',
+      experienceNote: 'Full description of each role and featured projects on the Experience page.',
       skillsTitle: 'Skills',
       languagesTitle: 'Languages',
     },

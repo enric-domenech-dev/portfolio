@@ -24,26 +24,26 @@
     "demoUrl": ""
   },
   {
-    "title": "TODO: Nombre del proyecto 4",
-    "company": "",
-    "description": "TODO: descripción breve — qué problema resuelve, tu rol y el resultado.",
-    "stack": [],
+    "title": "App de Control para Electrodomésticos Inteligentes (KMP)",
+    "company": "app2U",
+    "description": "Desarrollo de una nueva app (aún sin publicar) para la próxima generación de electrodomésticos inteligentes de un cliente del sector hogar, compartiendo lógica de negocio entre Android e iOS con Kotlin Multiplatform.",
+    "stack": ["Kotlin Multiplatform", "Jetpack Compose", "Ktor"],
     "repoUrl": "",
     "demoUrl": ""
   },
   {
-    "title": "TODO: Nombre del proyecto 5",
-    "company": "",
-    "description": "TODO: descripción breve — qué problema resuelve, tu rol y el resultado.",
-    "stack": [],
+    "title": "Sistema de Gestión de Stock Retail",
+    "company": "app2U",
+    "description": "Mantenimiento y evolución del sistema de control de stock de almacén y tienda para un cliente de retail (Java puro con RxJava), implementando nuevas funcionalidades en los flujos de trabajo tanto de tienda como de almacén. Introduje por primera vez en el proyecto tests unitarios y de integración en Kotlin.",
+    "stack": ["Java", "RxJava", "Android", "Kotlin (tests)"],
     "repoUrl": "",
     "demoUrl": ""
   },
   {
-    "title": "TODO: Nombre del proyecto 6",
-    "company": "",
-    "description": "TODO: descripción breve — qué problema resuelve, tu rol y el resultado.",
-    "stack": [],
+    "title": "Integración de Desarrollo Asistido por IA (Claude Code)",
+    "company": "app2U",
+    "description": "Participé en la introducción de Claude Code en el flujo de trabajo del equipo: revisiones de PRs automatizadas con IA, generación de tests JUnit, de integración y E2E con simuladores, creación de commits y PRs asistida, y conexión de MCPs (Redmine, Jira, Gmail, Calendar, Figma) para agilizar todo el ciclo de desarrollo.",
+    "stack": ["Claude Code", "JUnit", "CI/CD", "Git", "MCP"],
     "repoUrl": "",
     "demoUrl": ""
   }

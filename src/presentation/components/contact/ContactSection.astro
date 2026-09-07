@@ -3,8 +3,8 @@ import type { PersonalInfo } from '@/core/cv/domain/models/CVData';
 import { mailtoHref, telHref } from '@/core/shared/utils/formatters';
 import { getContactSection } from './constants';
 import { resolveLocale } from '@/core/shared/i18n/locale';
-import Card from '../shared/Card.astro';
 import Icon from '../shared/Icon.astro';
+import type { IconName } from '@/core/shared/constants/icons';
 
 interface Props {
   personal: PersonalInfo;
@@ -12,62 +12,70 @@ interface Props {
 
 const { personal } = Astro.props;
 const contactSection = getContactSection(resolveLocale(Astro.currentLocale));
+
+interface Row {
+  icon: IconName;
+  label: string;
+  value: string;
+  href?: string;
+  external?: boolean;
+}
+
+const rows: Row[] = [
+  { icon: 'mail', label: contactSection.fields.email, value: personal.email, href: mailtoHref(personal.email) },
+  { icon: 'phone', label: contactSection.fields.phone, value: personal.phone, href: telHref(personal.phone) },
+  { icon: 'map-pin', label: contactSection.fields.location, value: personal.location },
+  ...(personal.links.linkedin ? [{ icon: 'linkedin' as const, label: 'LinkedIn', value: personal.links.linkedin.replace(/^https?:\/\//, ''), href: personal.links.linkedin, external: true }] : []),
+  ...(personal.links.github ? [{ icon: 'github' as const, label: 'GitHub', value: personal.links.github.replace(/^https?:\/\//, ''), href: personal.links.github, external: true }] : []),
+];
 ---
 
 <section class="py-12 px-4">
-  <div class="max-w-3xl mx-auto">
-    <h2 class="section-title">{contactSection.title}</h2>
-    <p class="text-slate-600 dark:text-slate-300 -mt-6 mb-8 max-w-xl">{contactSection.intro}</p>
+  <div class="max-w-2xl mx-auto">
+    <p class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary-500 mb-3">
+      <Icon name="mail" size={13} />
+      {contactSection.eyebrow}
+    </p>
+    <h2 class="section-title !mb-4">{contactSection.title}</h2>
+    <p class="text-slate-600 dark:text-slate-300 mb-8 max-w-xl">{contactSection.intro}</p>
 
-    <div class="grid sm:grid-cols-2 gap-4">
-      <Card variant="glass" hover class="p-5">
-        <a href={mailtoHref(personal.email)} class="flex items-center gap-3">
-          <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200">
-            <Icon name="mail" size={18} />
-          </span>
-          <span class="text-slate-800 dark:text-slate-100 font-medium">{personal.email}</span>
+    <div class="glass-card overflow-hidden">
+      <div class="h-1.5 w-full bg-gradient-to-r from-primary-500 to-secondary-400"></div>
+
+      <div class="divide-y divide-[var(--surface-border)]">
+        {rows.map((row) => {
+          const Tag = row.href ? 'a' : 'div';
+          return (
+            <Tag
+              href={row.href}
+              target={row.external ? '_blank' : undefined}
+              rel={row.external ? 'noopener noreferrer' : undefined}
+              class="flex items-center gap-4 px-6 py-5 transition duration-200 hover:bg-white/40 dark:hover:bg-white/5"
+            >
+              <span class="flex items-center justify-center w-11 h-11 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200 shrink-0">
+                <Icon name={row.icon} size={18} />
+              </span>
+              <span class="min-w-0 flex-1">
+                <span class="block text-xs uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">{row.label}</span>
+                <span class="block text-slate-900 dark:text-slate-100 font-medium truncate">{row.value}</span>
+              </span>
+              {row.href && (
+                <Icon name={row.external ? 'external-link' : 'arrow-right'} size={16} class="text-slate-400 shrink-0" />
+              )}
+            </Tag>
+          );
+        })}
+      </div>
+
+      <div class="px-6 py-5 border-t border-[var(--surface-border)]">
+        <a
+          href={mailtoHref(personal.email)}
+          class="inline-flex items-center gap-2 bg-primary-500 text-white font-semibold px-6 py-3 rounded-full shadow-soft hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-lift transition duration-300"
+        >
+          <Icon name="mail" size={16} />
+          {contactSection.cta}
         </a>
-      </Card>
-
-      <Card variant="glass" hover class="p-5">
-        <a href={telHref(personal.phone)} class="flex items-center gap-3">
-          <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200">
-            <Icon name="phone" size={18} />
-          </span>
-          <span class="text-slate-800 dark:text-slate-100 font-medium">{personal.phone}</span>
-        </a>
-      </Card>
-
-      <Card variant="glass" class="p-5">
-        <div class="flex items-center gap-3">
-          <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200">
-            <Icon name="map-pin" size={18} />
-          </span>
-          <span class="text-slate-800 dark:text-slate-100 font-medium">{personal.location}</span>
-        </div>
-      </Card>
-
-      {personal.links.linkedin && (
-        <Card variant="glass" hover class="p-5">
-          <a href={personal.links.linkedin} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
-            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200">
-              <Icon name="linkedin" size={18} />
-            </span>
-            <span class="text-slate-800 dark:text-slate-100 font-medium">LinkedIn</span>
-          </a>
-        </Card>
-      )}
-
-      {personal.links.github && (
-        <Card variant="glass" hover class="p-5">
-          <a href={personal.links.github} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
-            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/20 dark:text-primary-200">
-              <Icon name="github" size={18} />
-            </span>
-            <span class="text-slate-800 dark:text-slate-100 font-medium">GitHub</span>
-          </a>
-        </Card>
-      )}
+      </div>
     </div>
   </div>
 </section>

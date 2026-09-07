@@ -8,6 +8,7 @@ export class ExperienceDtoMapper {
       position: dto.position,
       duration: dto.duration,
       description: dto.description,
+      summary: dto.summary,
       startDate: dto.startDate,
     };
   }

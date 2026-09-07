@@ -8,10 +8,11 @@ import { resolveLocale } from '@/core/shared/i18n/locale';
 
 const locale = resolveLocale(Astro.currentLocale);
 const items = container.getExperiences.execute(locale);
+const projects = container.getProjects.execute(locale);
 const experienceSection = getExperienceSection(locale);
 const siteDefaults = getSiteDefaults(locale);
 ---
 
 <Layout title={`${experienceSection.title} - ${siteDefaults.title}`}>
-  <ExperienceSection items={items} />
+  <ExperienceSection items={items} projects={projects} />
 </Layout>

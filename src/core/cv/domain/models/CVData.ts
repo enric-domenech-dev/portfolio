@@ -15,6 +15,7 @@ export interface PersonalInfo {
   email: string;
   phone: string;
   bio: string;
+  tagline: string;
   birthDate?: string;
   dni?: string;
   links: PersonalLinks;

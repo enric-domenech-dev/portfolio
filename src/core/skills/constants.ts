@@ -8,17 +8,17 @@ export function getSkillsSection(locale: Locale) {
 }
 
 export const BASE_CATEGORIES: Array<{ key: SkillCategoryKey; group: SkillGroup; showInCv: boolean; icon: IconName }> = [
-  { key: 'mobile', group: 'dev', showInCv: true, icon: 'smartphone' },
-  { key: 'backend', group: 'dev', showInCv: true, icon: 'server' },
-  { key: 'frontend', group: 'dev', showInCv: true, icon: 'monitor' },
-  { key: 'databases', group: 'dev', showInCv: true, icon: 'database' },
-  { key: 'gamedev', group: 'dev', showInCv: false, icon: 'gamepad' },
-  { key: 'tools', group: 'dev', showInCv: false, icon: 'wrench' },
+  { key: 'mobile', group: 'hard', showInCv: true, icon: 'smartphone' },
+  { key: 'tools', group: 'hard', showInCv: false, icon: 'wrench' },
+  { key: 'backend', group: 'hard', showInCv: true, icon: 'server' },
+  { key: 'frontend', group: 'hard', showInCv: true, icon: 'monitor' },
+  { key: 'databases', group: 'hard', showInCv: true, icon: 'database' },
+  { key: 'gamedev', group: 'hard', showInCv: false, icon: 'gamepad' },
   { key: 'other', group: 'hard', showInCv: false, icon: 'sparkles' },
   { key: 'soft', group: 'soft', showInCv: false, icon: 'heart' },
 ];
 
-export const SKILL_GROUPS: SkillGroup[] = ['dev', 'hard', 'soft'];
+export const SKILL_GROUPS: SkillGroup[] = ['hard', 'soft'];
 
 export function getSkillCategoryMeta(locale: Locale): Array<{
   key: SkillCategoryKey;

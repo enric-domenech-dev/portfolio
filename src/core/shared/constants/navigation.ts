@@ -8,8 +8,6 @@ export function getNavItems(locale: Locale): LinkItem[] {
   return [
     { href: localizedPath('/', locale), label: nav.inicio },
     { href: localizedPath('/experiencia', locale), label: nav.experiencia },
-    { href: localizedPath('/proyectos', locale), label: nav.proyectos },
-    { href: localizedPath('/educacion', locale), label: nav.educacion },
     { href: localizedPath('/skills', locale), label: nav.skills },
     { href: localizedPath('/contacto', locale), label: nav.contacto },
     { href: localizedPath('/cv', locale), label: nav.cv },
