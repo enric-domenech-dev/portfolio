@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Imagin Bank",
+    "company": "Sopra Steria",
+    "description": "Maintenance and improvement of the Imagin Bank iOS app: adjusted several screens to improve usability and fix visual bugs, updated copy to ensure UI consistency, implemented multi-language support using Localizable.strings files, and contributed to a promotional \"scratch and win\" feature for in-app campaigns.",
+    "stack": ["Swift", "UIKit", "Xcode", "Localizable.strings"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Voluntarios de la Caixa",
+    "company": "Sopra Steria",
+    "description": "Contributed to the maintenance and evolution of the La Caixa Volunteers iOS app: adjusted screens and fixed copy to keep visual and textual consistency, improved multi-language localization through Localizable.strings files, and built a dynamic carousel on the home screen to showcase featured events and improve visibility of available activities.",
+    "stack": ["Swift", "UIKit", "Xcode", "Localizable.strings"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Filmaps",
+    "company": "Strategying",
+    "description": "Built an Android app from scratch that lets users discover and explore real film and TV filming locations: integrated Google Maps with custom markers to display points of interest, used Location Services to show nearby places, consumed REST APIs to enrich each location's data, designed modern, responsive screens with Jetpack Compose, and added multi-language support via localized strings.xml files.",
+    "stack": ["Kotlin Multiplatform", "Jetpack Compose", "Google Maps SDK", "Location Services", "Room", "Ktor"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "TODO: Project name 4",
+    "company": "",
+    "description": "TODO: brief description — what problem it solves, your role and the outcome.",
+    "stack": [],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "TODO: Project name 5",
+    "company": "",
+    "description": "TODO: brief description — what problem it solves, your role and the outcome.",
+    "stack": [],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "TODO: Project name 6",
+    "company": "",
+    "description": "TODO: brief description — what problem it solves, your role and the outcome.",
+    "stack": [],
+    "repoUrl": "",
+    "demoUrl": ""
+  }
+]

@@ -5,6 +5,7 @@ export class ProjectDtoMapper {
   static toDomain(dto: ProjectDto): Project {
     return {
       title: dto.title,
+      company: dto.company,
       description: dto.description,
       stack: dto.stack,
       repoUrl: dto.repoUrl,

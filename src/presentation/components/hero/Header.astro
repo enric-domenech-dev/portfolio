@@ -35,7 +35,10 @@ const heroLabels = getHeroLabels(locale);
           {heroLabels.exploreExperience}
           <Icon name="arrow-right" size={16} />
         </Button>
-        <Button href={localizedPath('/cv', locale)} variant="outline">{heroLabels.viewFullCv}</Button>
+        <Button href={localizedPath('/cv', locale)} variant="outline">
+          <Icon name="file-text" size={16} />
+          {heroLabels.viewFullCv}
+        </Button>
         {personal.links.linkedin && (
           <Button href={personal.links.linkedin} variant="outline" target="_blank" rel="noopener noreferrer">
             <Icon name="linkedin" size={16} />

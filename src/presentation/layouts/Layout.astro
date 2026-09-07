@@ -34,5 +34,18 @@ const { title, description = siteDefaults.description } = Astro.props;
     <TopBar />
     <Drawer />
     <div id="pageContent" class="pt-16"><slot /></div>
+    <script>
+      // Entrance animations use `animation-fill-mode: both`, which keeps pinning
+      // `transform`/`opacity` after they finish and blocks `:hover` effects on the
+      // same properties. Drop the animation classes once they've played so hover
+      // states (lift, glow, scale...) work normally afterwards.
+      document.addEventListener('animationend', (e) => {
+        const target = e.target;
+        if (!(target instanceof HTMLElement)) return;
+        if (target.classList.contains('animate-fade-up') || target.classList.contains('animate-fade-in')) {
+          target.classList.remove('animate-fade-up', 'animate-fade-in');
+        }
+      });
+    </script>
   </body>
 </html>

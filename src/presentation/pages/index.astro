@@ -6,8 +6,9 @@ import { container } from '@/core/di/container';
 import { getSiteDefaults } from '@/core/shared/constants/ui';
 import { resolveLocale } from '@/core/shared/i18n/locale';
 
-const cvData = container.getCVData.execute();
-const siteDefaults = getSiteDefaults(resolveLocale(Astro.currentLocale));
+const locale = resolveLocale(Astro.currentLocale);
+const cvData = container.getCVData.execute(locale);
+const siteDefaults = getSiteDefaults(locale);
 ---
 
 <Layout title={siteDefaults.title} description={siteDefaults.description}>

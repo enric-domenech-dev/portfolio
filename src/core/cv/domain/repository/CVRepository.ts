@@ -1,5 +1,6 @@
 import type { CVData } from '../models/CVData';
+import type { Locale } from '@/core/shared/i18n/locale';
 
 export interface CVRepository {
-  getAll(): CVData;
+  getAll(locale: Locale): CVData;
 }

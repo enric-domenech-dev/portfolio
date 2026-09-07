@@ -1,9 +1,10 @@
 ---
 import type { SkillCategory } from '@/core/skills/domain/models/Skill';
-import { getSkillsSection, getSkillCategoryMeta } from '@/core/skills/constants';
+import { getSkillsSection, getSkillCategoryMeta, SKILL_GROUPS } from '@/core/skills/constants';
 import { STAGGER_STEP_MS } from '@/core/shared/constants/animations';
 import { staggerDelay } from '@/core/shared/utils/formatters';
 import { resolveLocale } from '@/core/shared/i18n/locale';
+import type { IconName } from '@/core/shared/constants/icons';
 import Badge from '../shared/Badge.astro';
 import Card from '../shared/Card.astro';
 import Icon from '../shared/Icon.astro';
@@ -16,29 +17,93 @@ const { categories } = Astro.props;
 const locale = resolveLocale(Astro.currentLocale);
 const skillsSection = getSkillsSection(locale);
 const categoryMeta = getSkillCategoryMeta(locale);
-const titleByKey = Object.fromEntries(categoryMeta.map((meta) => [meta.key, meta.title]));
+const metaByKey = Object.fromEntries(categoryMeta.map((meta) => [meta.key, meta]));
+
+const TAB_ICON: Record<(typeof SKILL_GROUPS)[number], IconName> = {
+  dev: 'code',
+  hard: 'wrench',
+  soft: 'heart',
+};
+
+const tabs = SKILL_GROUPS.map((group) => ({
+  group,
+  label: skillsSection.tabs[group],
+  icon: TAB_ICON[group],
+}));
 ---
 
 <section class="py-14 px-4">
   <div class="max-w-5xl mx-auto">
     <h2 class="section-title">{skillsSection.title}</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {categories.map((category, categoryIndex) => (
-        <Card variant="glass" class="p-6 animate-fade-up" style={staggerDelay(categoryIndex, STAGGER_STEP_MS.grid)}>
-          <h3 class="flex items-center gap-2.5 text-lg font-bold mb-4 text-slate-900 dark:text-slate-100">
-            <Icon name={category.icon} class="text-primary-500" />
-            {titleByKey[category.key]}
-          </h3>
-          <div class="flex flex-wrap gap-2.5">
-            {category.items.map((skill, skillIndex) => (
-              <Badge variant="chip" class="animate-fade-in" style={staggerDelay(skillIndex, STAGGER_STEP_MS.chips)}>
-                {skill}
-              </Badge>
-            ))}
-          </div>
-        </Card>
+    <div class="flex flex-wrap gap-2 mb-8" role="tablist">
+      {tabs.map((tab, index) => (
+        <button
+          type="button"
+          role="tab"
+          data-skills-tab
+          data-group={tab.group}
+          aria-selected={index === 0 ? 'true' : 'false'}
+          class:list={[
+            'skills-tab inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition duration-200',
+            index === 0
+              ? 'is-active bg-primary-500 text-white shadow-glow'
+              : 'glass-card text-slate-600 dark:text-slate-300 hover:bg-white/40 dark:hover:bg-white/10',
+          ]}
+        >
+          <Icon name={tab.icon} size={16} />
+          {tab.label}
+        </button>
       ))}
     </div>
+
+    {tabs.map((tab, tabIndex) => (
+      <div data-skills-panel data-group={tab.group} hidden={tabIndex !== 0}>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {categories
+            .filter((category) => metaByKey[category.key].group === tab.group)
+            .map((category, categoryIndex) => (
+              <Card variant="glass" hover class="p-6 animate-fade-up" style={staggerDelay(categoryIndex, STAGGER_STEP_MS.grid)}>
+                <h3 class="flex items-center gap-2.5 text-lg font-bold mb-4 text-slate-900 dark:text-slate-100">
+                  <Icon name={category.icon} class="text-primary-500" />
+                  {metaByKey[category.key].title}
+                </h3>
+                <div class="flex flex-wrap gap-2.5">
+                  {category.items.map((skill, skillIndex) => (
+                    <Badge variant="chip" class="animate-fade-in" style={staggerDelay(skillIndex, STAGGER_STEP_MS.chips)}>
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </Card>
+            ))}
+        </div>
+      </div>
+    ))}
   </div>
 </section>
+
+<script>
+  const tabButtons = document.querySelectorAll<HTMLButtonElement>('[data-skills-tab]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-skills-panel]');
+
+  const ACTIVE_CLASSES = ['is-active', 'bg-primary-500', 'text-white', 'shadow-glow'];
+  const INACTIVE_CLASSES = ['glass-card', 'text-slate-600', 'dark:text-slate-300'];
+
+  tabButtons.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const group = tab.dataset.group;
+
+      tabButtons.forEach((t) => {
+        const isActive = t === tab;
+        t.setAttribute('aria-selected', String(isActive));
+        t.classList.remove(...ACTIVE_CLASSES, ...INACTIVE_CLASSES);
+        t.classList.add(...(isActive ? ACTIVE_CLASSES : INACTIVE_CLASSES));
+      });
+
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.group !== group;
+      });
+    });
+  });
+</script>

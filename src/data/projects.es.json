@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Imagin Bank",
+    "company": "Sopra Steria",
+    "description": "Mantenimiento y mejora de la app iOS de Imagin Bank: ajusté pantallas para mejorar la usabilidad, corregí errores visuales y actualicé literales para mantener la coherencia de la interfaz. Implementé soporte multilenguaje con Localizable.strings y participé en el desarrollo de una funcionalidad promocional tipo \"rasca y gana\" para campañas de la app.",
+    "stack": ["Swift", "UIKit", "Xcode", "Localizable.strings"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Voluntarios de la Caixa",
+    "company": "Sopra Steria",
+    "description": "Colaboré en el mantenimiento y evolución de la app iOS del programa de Voluntarios de la Caixa: ajusté pantallas y corregí literales para mantener la coherencia visual y textual, mejoré la localización multilenguaje con Localizable.strings y desarrollé un carrusel dinámico en la pantalla principal para destacar eventos y mejorar la visibilidad de las actividades.",
+    "stack": ["Swift", "UIKit", "Xcode", "Localizable.strings"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Filmaps",
+    "company": "Strategying",
+    "description": "Desarrollé desde cero una app Android que permite descubrir y explorar localizaciones reales de películas y series: integré Google Maps con marcadores personalizados, utilicé Location Services para mostrar lugares cercanos, consumí APIs REST para enriquecer los datos de cada localización, diseñé pantallas modernas con Jetpack Compose y añadí soporte multilenguaje con strings.xml.",
+    "stack": ["Kotlin Multiplatform", "Jetpack Compose", "Google Maps SDK", "Location Services", "Room", "Ktor"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "TODO: Nombre del proyecto 4",
+    "company": "",
+    "description": "TODO: descripción breve — qué problema resuelve, tu rol y el resultado.",
+    "stack": [],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "TODO: Nombre del proyecto 5",
+    "company": "",
+    "description": "TODO: descripción breve — qué problema resuelve, tu rol y el resultado.",
+    "stack": [],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "TODO: Nombre del proyecto 6",
+    "company": "",
+    "description": "TODO: descripción breve — qué problema resuelve, tu rol y el resultado.",
+    "stack": [],
+    "repoUrl": "",
+    "demoUrl": ""
+  }
+]

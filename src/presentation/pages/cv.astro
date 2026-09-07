@@ -5,8 +5,9 @@ import { container } from '@/core/di/container';
 import { getCvLabels } from '@/core/cv/constants';
 import { resolveLocale } from '@/core/shared/i18n/locale';
 
-const cvData = container.getCVData.execute();
-const cvLabels = getCvLabels(resolveLocale(Astro.currentLocale));
+const locale = resolveLocale(Astro.currentLocale);
+const cvData = container.getCVData.execute(locale);
+const cvLabels = getCvLabels(locale);
 ---
 
 <Layout title={cvLabels.pageTitle}>

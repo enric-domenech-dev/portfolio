@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Imagin Bank",
+    "company": "Sopra Steria",
+    "description": "Manteniment i millora de l'app iOS d'Imagin Bank: vaig ajustar pantalles per millorar la usabilitat, vaig corregir errors visuals i vaig actualitzar literals per mantenir la coherència de la interfície. Vaig implementar suport multiidioma amb Localizable.strings i vaig participar en el desenvolupament d'una funcionalitat promocional tipus \"rasca i guanya\" per a campanyes de l'app.",
+    "stack": ["Swift", "UIKit", "Xcode", "Localizable.strings"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Voluntarios de la Caixa",
+    "company": "Sopra Steria",
+    "description": "Vaig col·laborar en el manteniment i evolució de l'app iOS del programa de Voluntaris de la Caixa: vaig fer ajustos a pantalles i correccions de literals per mantenir la coherència visual i textual, vaig implementar millores en la localització multiidioma mitjançant fitxers Localizable.strings i vaig desenvolupar un carrusel dinàmic a la pantalla principal per mostrar esdeveniments destacats, millorant la visibilitat de les activitats disponibles.",
+    "stack": ["Swift", "UIKit", "Xcode", "Localizable.strings"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "Filmaps",
+    "company": "Strategying",
+    "description": "Vaig desenvolupar des de zero una aplicació Android que permet als usuaris descobrir i explorar localitzacions reals de pel·lícules i sèries: vaig integrar Google Maps amb marcadors personalitzats, vaig utilitzar Location Services per mostrar llocs propers, vaig consumir APIs REST per obtenir dades enriquides de cada localització, vaig dissenyar pantalles modernes amb Jetpack Compose i vaig afegir suport multiidioma mitjançant fitxers strings.xml localitzats.",
+    "stack": ["Kotlin Multiplatform", "Jetpack Compose", "Google Maps SDK", "Location Services", "Room", "Ktor"],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "TODO: Nom del projecte 4",
+    "company": "",
+    "description": "TODO: descripció breu — quin problema resol, el teu rol i el resultat.",
+    "stack": [],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "TODO: Nom del projecte 5",
+    "company": "",
+    "description": "TODO: descripció breu — quin problema resol, el teu rol i el resultat.",
+    "stack": [],
+    "repoUrl": "",
+    "demoUrl": ""
+  },
+  {
+    "title": "TODO: Nom del projecte 6",
+    "company": "",
+    "description": "TODO: descripció breu — quin problema resol, el teu rol i el resultat.",
+    "stack": [],
+    "repoUrl": "",
+    "demoUrl": ""
+  }
+]

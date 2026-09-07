@@ -14,6 +14,8 @@ export type IconName =
   | 'gamepad'
   | 'wrench'
   | 'sparkles'
+  | 'heart'
+  | 'file-text'
   | 'download'
   | 'printer'
   | 'sun'
@@ -119,6 +121,18 @@ export const ICONS: Record<IconName, IconDef> = {
     fill: 'none',
     inner:
       '<path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" /><path d="M22 4h-4" /><circle cx="4" cy="20" r="2" />',
+  },
+  heart: {
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    inner:
+      '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />',
+  },
+  'file-text': {
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    inner:
+      '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /><path d="M14 2v4a2 2 0 0 0 2 2h4" /><path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" />',
   },
   download: {
     viewBox: '0 0 24 24',

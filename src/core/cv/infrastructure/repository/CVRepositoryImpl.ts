@@ -3,6 +3,7 @@ import type { ExperienceRepository } from '../../../experience/domain/repository
 import type { SkillsRepository } from '../../../skills/domain/repository/SkillsRepository';
 import type { CVData } from '../../domain/models/CVData';
 import type { CVRepository } from '../../domain/repository/CVRepository';
+import type { Locale } from '@/core/shared/i18n/locale';
 import { CVLocalDataSource } from '../datasource/CVLocalDataSource';
 import { CVDataMapper } from '../mapper/CVDataMapper';
 
@@ -14,13 +15,13 @@ export class CVRepositoryImpl implements CVRepository {
     private readonly skillsRepository: SkillsRepository
   ) {}
 
-  getAll(): CVData {
+  getAll(locale: Locale): CVData {
     return CVDataMapper.toDomain(
-      this.dataSource.getPersonal(),
-      this.dataSource.getLanguages(),
-      this.experienceRepository.getAll(),
-      this.educationRepository.getAll(),
-      this.skillsRepository.getAll()
+      this.dataSource.getPersonal(locale),
+      this.dataSource.getLanguages(locale),
+      this.experienceRepository.getAll(locale),
+      this.educationRepository.getAll(locale),
+      this.skillsRepository.getAll(locale)
     );
   }
 }

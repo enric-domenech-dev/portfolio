@@ -1,5 +1,6 @@
 import type { Project } from '../models/Project';
+import type { Locale } from '@/core/shared/i18n/locale';
 
 export interface ProjectsRepository {
-  getAll(): Project[];
+  getAll(locale: Locale): Project[];
 }

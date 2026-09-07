@@ -36,7 +36,7 @@ export interface Dictionary {
   };
   experience: { title: string; eyebrow: string };
   education: { title: string; eyebrow: string; superior: string; universitari: string };
-  skillsSection: { title: string };
+  skillsSection: { title: string; tabs: { dev: string; hard: string; soft: string } };
   skillCategories: {
     mobile: { title: string; cvTitle: string };
     backend: { title: string; cvTitle: string };
@@ -45,6 +45,7 @@ export interface Dictionary {
     gamedev: { title: string; cvTitle: string };
     tools: { title: string; cvTitle: string };
     other: { title: string; cvTitle: string };
+    soft: { title: string; cvTitle: string };
   };
   projects: { title: string; eyebrow: string; placeholderNote: string; repo: string; demo: string };
   contact: { title: string; eyebrow: string; intro: string };
@@ -88,7 +89,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
     hero: {
       eyebrow: 'Portfolio Profesional',
       exploreExperience: 'Explorar experiencia',
-      viewFullCv: 'Ver CV completo',
+      viewFullCv: 'CV',
       linkedin: 'LinkedIn',
       github: 'GitHub',
     },
@@ -105,7 +106,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       superior: 'Grados Superiores',
       universitari: 'Formación Universitaria',
     },
-    skillsSection: { title: 'Competencias' },
+    skillsSection: { title: 'Competencias', tabs: { dev: 'Dev Skills', hard: 'Hard Skills', soft: 'Soft Skills' } },
     skillCategories: {
       mobile: { title: 'Mobile', cvTitle: 'Desarrollo Mobile' },
       backend: { title: 'Backend', cvTitle: 'Backend' },
@@ -114,11 +115,12 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       gamedev: { title: 'Game Development', cvTitle: 'Game Development' },
       tools: { title: 'Dev Tools', cvTitle: 'Dev Tools' },
       other: { title: 'Otras', cvTitle: 'Otras' },
+      soft: { title: 'Soft Skills', cvTitle: 'Soft Skills' },
     },
     projects: {
       title: 'Proyectos',
       eyebrow: 'Trabajo personal',
-      placeholderNote: 'Contenido de ejemplo — pendiente de completar con proyectos reales.',
+      placeholderNote: 'Proyectos profesionales en los que he participado.',
       repo: 'Repositorio',
       demo: 'Demo',
     },
@@ -165,7 +167,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
     hero: {
       eyebrow: 'Portfolio Professional',
       exploreExperience: 'Explorar experiència',
-      viewFullCv: 'Veure CV complet',
+      viewFullCv: 'CV',
       linkedin: 'LinkedIn',
       github: 'GitHub',
     },
@@ -182,7 +184,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       superior: 'Graus Superiors',
       universitari: 'Formació Universitària',
     },
-    skillsSection: { title: 'Competències' },
+    skillsSection: { title: 'Competències', tabs: { dev: 'Dev Skills', hard: 'Hard Skills', soft: 'Soft Skills' } },
     skillCategories: {
       mobile: { title: 'Mobile', cvTitle: 'Desenvolupament Mobile' },
       backend: { title: 'Backend', cvTitle: 'Backend' },
@@ -191,11 +193,12 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       gamedev: { title: 'Game Development', cvTitle: 'Game Development' },
       tools: { title: 'Dev Tools', cvTitle: 'Dev Tools' },
       other: { title: 'Altres', cvTitle: 'Altres' },
+      soft: { title: 'Soft Skills', cvTitle: 'Soft Skills' },
     },
     projects: {
       title: 'Projectes',
       eyebrow: 'Feina personal',
-      placeholderNote: 'Contingut d\'exemple — pendent de completar amb projectes reals.',
+      placeholderNote: 'Projectes professionals en els quals he participat.',
       repo: 'Repositori',
       demo: 'Demo',
     },
@@ -242,7 +245,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
     hero: {
       eyebrow: 'Professional Portfolio',
       exploreExperience: 'Explore experience',
-      viewFullCv: 'View full CV',
+      viewFullCv: 'CV',
       linkedin: 'LinkedIn',
       github: 'GitHub',
     },
@@ -259,7 +262,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       superior: 'Higher-Level Diplomas',
       universitari: 'University Studies',
     },
-    skillsSection: { title: 'Skills' },
+    skillsSection: { title: 'Skills', tabs: { dev: 'Dev Skills', hard: 'Hard Skills', soft: 'Soft Skills' } },
     skillCategories: {
       mobile: { title: 'Mobile', cvTitle: 'Mobile Development' },
       backend: { title: 'Backend', cvTitle: 'Backend' },
@@ -268,11 +271,12 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
       gamedev: { title: 'Game Development', cvTitle: 'Game Development' },
       tools: { title: 'Dev Tools', cvTitle: 'Dev Tools' },
       other: { title: 'Other', cvTitle: 'Other' },
+      soft: { title: 'Soft Skills', cvTitle: 'Soft Skills' },
     },
     projects: {
       title: 'Projects',
       eyebrow: 'Personal work',
-      placeholderNote: 'Example content — pending real project entries.',
+      placeholderNote: "Professional projects I've contributed to.",
       repo: 'Repository',
       demo: 'Demo',
     },
