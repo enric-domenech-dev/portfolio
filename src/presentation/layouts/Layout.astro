@@ -13,6 +13,8 @@ interface Props {
 const locale = resolveLocale(Astro.currentLocale);
 const siteDefaults = getSiteDefaults(locale);
 const { title, description = siteDefaults.description } = Astro.props;
+const socialImage = new URL('/profile.jpg', Astro.site ?? Astro.url).toString();
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
 ---
 
 <!doctype html>
@@ -21,7 +23,18 @@ const { title, description = siteDefaults.description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="icon" type="image/jpeg" href="/profile.jpg" />
     <title>{title}</title>
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
     <script is:inline>
       (function () {
         var stored = localStorage.getItem('theme');

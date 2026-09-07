@@ -67,7 +67,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
   es: {
     site: {
       title: 'Portfolio - Enric Domènech',
-      description: 'Portfolio profesional de Enric Domènech - Full-Stack & Mobile Developer',
+      description: 'Portfolio profesional de Enric Domènech - Software Engineer especializado en Android, iOS y Kotlin Multiplatform',
     },
     nav: {
       inicio: 'Inicio',
@@ -140,7 +140,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
   ca: {
     site: {
       title: 'Portfolio - Enric Domènech',
-      description: 'Portfolio professional d\'Enric Domènech - Full-Stack & Mobile Developer',
+      description: 'Portfolio professional d\'Enric Domènech - Software Engineer especialitzat en Android, iOS i Kotlin Multiplatform',
     },
     nav: {
       inicio: 'Inici',
@@ -213,7 +213,7 @@ export const DICTIONARY: Record<Locale, Dictionary> = {
   en: {
     site: {
       title: 'Portfolio - Enric Domènech',
-      description: 'Professional portfolio of Enric Domènech - Full-Stack & Mobile Developer',
+      description: 'Professional portfolio of Enric Domènech - Software Engineer specialized in Android, iOS and Kotlin Multiplatform',
     },
     nav: {
       inicio: 'Home',
